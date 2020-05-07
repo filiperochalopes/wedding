@@ -30,7 +30,7 @@ class Post(db.Model):
     user = db.relationship('User', foreign_keys=user_id)
 
     def __init__(self, content, user_id):
-        sel.content = content
+        self.content = content
         self.user_id= user_id
 
     def __repr__(self):
@@ -45,3 +45,16 @@ class Follow(db.Model):
 
     user = db.relationship('User', foreign_keys=user_id)
     follow = db.relationship('User', foreign_keys=follow_id)
+
+
+class Gift(db.Model):
+    __tablename__ = "gifts"
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    price = db.Column(db.Float)
+
+
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price

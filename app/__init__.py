@@ -12,5 +12,5 @@ migrate = Migrate(app,db)
 manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
-from app.models import tables, forms 
+from app.models import tables, forms
 from app.controllers import default

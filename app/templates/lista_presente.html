@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% for i in range(11) %}
+ {{ i }}
+{% endfor %}
+
+<ul>
+{% for gift in gifts %}
+ <li>{{ gift.name }} R$ {{ gift.price }}</li>
+{% endfor %}
+</ul>
+{% endblock %}
