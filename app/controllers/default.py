@@ -38,4 +38,4 @@ def add_gift(name,price):
 def view_gift():
      gifts = db.session.query(Gift).all()
      print(gifts)
-     return render_template('lista_presente.html', gifts=gifts)
+     return render_template('presentes.html', gifts=gifts)

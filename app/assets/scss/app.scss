@@ -1,0 +1,25 @@
+@import 'header';
+
+html{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background-color: green;
+    font-family: 'Roboto', sans-serif;
+
+    h1, h2, h3{
+        font-family: 'Charmonman', cursive;
+    }
+
+    > header{
+        background-color: red;
+    }
+
+    > footer{
+        background-color: blueviolet;
+    }
+}

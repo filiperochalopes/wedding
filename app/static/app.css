@@ -1,0 +1,19 @@
+body > header nav h2 {
+  font-family: 'Charmonman', cursive;
+  font-weight: bold; }
+
+html {
+  padding: 0;
+  margin: 0; }
+
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: green;
+    font-family: 'Roboto', sans-serif; }
+    body h1, body h2, body h3 {
+      font-family: 'Charmonman', cursive; }
+      body > header {
+        background-color: red; }
+        body > footer {
+          background-color: blueviolet; }
