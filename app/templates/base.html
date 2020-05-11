@@ -17,16 +17,20 @@
     <![endif]-->
   </head>
   <body>
-    <div class="container">
-      <div class="header clearfix">
-        <nav>
-          <ul class="nav nav-pills pull-right">
-            <li role="presentation" class="active"><a href="#">Home</a></li>
-            <li role="presentation"><a href="#">About</a></li>
-            <li role="presentation"><a href="#">Contact</a></li>
-          </ul>
-        </nav>
-        <h3 class="text-muted">Toilter</h3>
+    <header>
+      <!-- ! Aqui vc vai pensar os links que devem ter -->
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          <li><a href="nosso-amor">Nosso Amor</a></li>
+          <li><a href="#">Confirme sua presença</a></li>
+          <li><a href="#">Presentes</a></li>
+        </ul>
+      </nav>
+      </header>
+      <div class="container">
+        <main>
+          <h1>Site de casamento</h1>
+        </main>
       </div>
 
       {% block content %}
@@ -34,9 +38,7 @@
 
     </div> <!-- /container -->
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="{{url_for('static',
-    filename="js/bootstrap.min.js")}}"></script>
   </body>
 </html>
