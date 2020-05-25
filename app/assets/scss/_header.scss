@@ -1,5 +1,9 @@
 body{
-    > header{
+    > header{ 
+        background-color: #fff;
+        height: 60px;
+        width: 1440px;
+        overflow: hidden;
         nav{
             h2{
                 font-family: 'Charmonman', cursive;
