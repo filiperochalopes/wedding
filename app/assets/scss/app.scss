@@ -1,21 +1,24 @@
-@import 'header';
+@import "header";
+@import "footer";
 
-html{
+html {
     padding: 0;
     margin: 0;
 }
+button{
+    outline: none;
+    border: none;
+}
 
-body{
+body {
     padding: 0;
     margin: 0;
     background-color: green;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 
-    h1, h2, h3{
-        font-family: 'Charmonman', cursive;
-    }
-
-    > footer{
-        background-color: blueviolet;
+    h1,
+    h2,
+    h3 {
+        font-family: "Charmonman", cursive;
     }
 }

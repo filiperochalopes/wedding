@@ -1,21 +1,74 @@
 body > header {
-  background-color: #fff;
   height: 60px;
-  overflow: hidden; }
+  width: 1440px;
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 20px 10px; }
   body > header nav h2 {
     font-family: 'Charmonman', cursive;
     font-weight: bold; }
+
+footer {
+  width: 100vw;
+  height: 415px;
+  background: #7c2a2e; }
+  footer div {
+    width: 900px;
+    max-width: 900px;
+    margin: 0 auto; }
+    footer div h3 {
+      width: 247px;
+      height: 56px;
+      padding-top: 47px;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 30px;
+      line-height: 57px;
+      display: flex;
+      align-items: center;
+      color: #ffffff;
+      margin: 0; }
+      footer div button {
+        height: 53px;
+        background: #c4c4c4;
+        margin: 0 auto;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        color: #000000;
+        padding: 0 32px; }
+        footer div button svg {
+          margin-right: 20px; }
+    footer div ul {
+      width: 376px;
+      height: 180px;
+      padding-top: 17px;
+      margin: 0px 0px;
+      font-family: Roboto;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 21px;
+      padding: 0px 0px; }
+      footer div ul li {
+        list-style: none;
+        margin-bottom: 15px; }
+        footer div ul li a {
+          color: #ffffff;
+          text-decoration: none; }
 
 html {
   padding: 0;
   margin: 0; }
 
-  body {
-    padding: 0;
-    margin: 0;
-    background-color: green;
-    font-family: 'Roboto', sans-serif; }
-    body h1, body h2, body h3 {
-      font-family: 'Charmonman', cursive; }
-      body > footer {
-        background-color: blueviolet; }
+  button {
+    outline: none;
+    border: none; }
+
+    body {
+      padding: 0;
+      margin: 0;
+      background-color: green;
+      font-family: "Roboto", sans-serif; }
+      body h1, body h2, body h3 {
+        font-family: "Charmonman", cursive; }
