@@ -1,0 +1,38 @@
+#nosso-amor {
+  header {
+    h1 {
+      font-family: Charmonman;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 48px;
+      line-height: 91px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .container {
+    > div {
+      display: flex;
+
+      &:nth-child(1) {
+        > div {
+          &:first-child {
+            flex: 0 1 35%;
+
+            .yellow_circle {
+              width: 360px;
+              height: 360px;
+              background: $yellow;
+              transform: translateX(-46px);
+            }
+          }
+
+          &:last-child {
+            flex: 1 0 auto;
+          }
+        }
+      }
+    }
+  }
+}
