@@ -3,18 +3,17 @@
 @import "footer";
 @import "banner";
 
-html {
+html, body, ul {
     padding: 0;
     margin: 0;
 }
+
 button{
     outline: none;
     border: none;
 }
 
 body {
-    padding: 0;
-    margin: 0;
     font-family: "Roboto", sans-serif;
 
     h1,
@@ -22,4 +21,12 @@ body {
     h3 {
         font-family: "Charmonman", cursive;
     }
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    max-width: 900px;
+    padding: 0 16px;
+    margin: 0 auto;
 }

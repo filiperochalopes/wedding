@@ -1,108 +1,125 @@
 body > header {
   width: 100vw;
-  height: 40px;
+  height: 60px;
+  box-sizing: border-box;
   position: fixed;
   overflow: hidden;
-  background-color: #f1f1f1;
-  padding: 20px 10px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }
-  body > header nav h2 {
-    font-family: 'Charmonman', cursive;
-    font-weight: bold; }
-  body > header ul li {
-    list-style: none; }
+  background: #f1f1f1;
+  padding: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 2; }
+  body > header button {
+    width: 40px;
+    height: 40px;
+    background: #000000;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer; }
+    body > header nav {
+      text-align: center; }
+      body > header ul {
+        list-style: none; }
+        body > header ul li {
+          display: inline;
+          margin: 0 5px;
+          font-size: 20px;
+          line-height: 40px; }
+          body > header ul li a {
+            font-family: "Charmonman", cursive;
+            font-weight: bold;
+            text-decoration: none;
+            color: #242424; }
+            body > header ul li a:hover {
+              text-decoration: underline; }
 
 footer {
   width: 100vw;
   height: 415px;
   background: #7c2a2e; }
-  footer div {
-    width: 900px;
-    max-width: 900px;
-    margin: 0 auto; }
-    footer div h3 {
-      width: 247px;
-      height: 56px;
-      padding-top: 47px;
-      font-style: normal;
-      font-weight: bold;
-      font-size: 30px;
-      line-height: 57px;
-      display: flex;
-      align-items: center;
-      color: #ffffff;
-      margin: 0; }
-      footer div button {
-        height: 53px;
-        background: #c4c4c4;
-        margin: 0 auto;
-        font-size: 18px;
-        display: flex;
-        align-items: center;
-        color: #000000;
-        padding: 0 32px; }
-        footer div button svg {
-          margin-right: 20px; }
-    footer div ul {
-      width: 376px;
-      height: 180px;
-      padding-top: 17px;
-      margin: 0px 0px;
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
+  footer div h3 {
+    width: 247px;
+    height: 56px;
+    padding-top: 47px;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 57px;
+    color: #ffffff;
+    margin: 0; }
+    footer div button {
+      height: 53px;
+      color: #000000;
+      background: #c4c4c4;
+      margin: 0 auto;
       font-size: 18px;
-      line-height: 21px;
-      padding: 0px 0px; }
-      footer div ul li {
-        list-style: none;
-        margin-bottom: 15px; }
-        footer div ul li a {
-          color: #ffffff;
-          text-decoration: none; }
+      padding: 0 32px; }
+      footer div button svg {
+        margin-right: 20px; }
+  footer div ul {
+    width: 376px;
+    height: 180px;
+    padding-top: 17px;
+    margin: 0px 0px;
+    font-size: 18px;
+    line-height: 21px;
+    padding: 0px 0px; }
+    footer div ul li {
+      list-style: none;
+      margin-bottom: 15px; }
+      footer div ul li a {
+        color: #ffffff;
+        text-decoration: none; }
 
-#banner div {
+#banner > .container {
+  position: relative;
   width: 100vw;
-  max-width: 900px; }
-  #banner div img {
+  max-width: 900px;
+  padding: 0 16px;
+  margin: 0 auto;
+  box-sizing: border-box; }
+  #banner > .container img {
     width: 1031px;
-    height: 1031px;
+    height: auto;
     border-radius: 50%;
-    border-style: solid;
-    border-width: 50px;
-    border-color: #92e3b2; }
-    #banner div .yellow_circle {
+    border: 50px solid #92e3b2;
+    box-sizing: border-box;
+    transform: translateX(-188px); }
+    #banner > .container .yellow_circle {
+      position: absolute;
+      top: 550px;
+      right: 0px;
       width: 300px;
       height: 300px;
       border-radius: 50%;
-      background-color: #ecef49; }
-      #banner div .yellow_circle h2 {
-        font-style: normal;
+      background: #ecef49;
+      padding: 80px 40px;
+      box-sizing: border-box;
+      text-align: center; }
+      #banner > .container .yellow_circle h2 {
         font-weight: normal;
         font-size: 38px;
         line-height: 18px;
-        display: flex;
-        align-items: center;
-        text-align: center;
-        letter-spacing: -0.07em; }
-        #banner div .yellow_circle button {
+        display: inline-block;
+        letter-spacing: 2px;
+        margin: 0;
+        margin-bottom: 20px; }
+        #banner > .container .yellow_circle button {
           margin: 0 auto;
-          width: 250px;
-          height: 69px;
           font-size: 40px;
+          padding: 20px;
           font-weight: normal;
           text-align: center;
           line-height: 18px;
-          display: flex;
-          align-items: center;
-          letter-spacing: -0.06em;
+          white-space: nowrap;
+          font-family: Charmonman;
+          letter-spacing: -2.5px;
           color: #000000;
           background: #92e3b2;
           border: 2px solid #427757;
           box-sizing: border-box;
           box-shadow: 0px 4px 0px #427757; }
 
-html {
+html, body, ul {
   padding: 0;
   margin: 0; }
 
@@ -111,8 +128,13 @@ html {
     border: none; }
 
     body {
-      padding: 0;
-      margin: 0;
       font-family: "Roboto", sans-serif; }
       body h1, body h2, body h3 {
         font-family: "Charmonman", cursive; }
+
+.container {
+  position: relative;
+  width: 100vw;
+  max-width: 900px;
+  padding: 0 16px;
+  margin: 0 auto; }

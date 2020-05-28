@@ -1,66 +1,53 @@
 footer {
-    width: 100vw;
-    height: 415px;
+  width: 100vw;
+  height: 415px;
+  background: $wine;
 
-    background: #7c2a2e;
+  div {
+    h3 {
+      width: 247px;
+      height: 56px;
+      padding-top: 47px;
+      font-weight: bold;
+      font-size: 30px;
+      line-height: 57px;
 
-    div {
-        width: 900px;
-        max-width: 900px;
-        margin: 0 auto;
-
-        h3 {
-            width: 247px;
-            height: 56px;
-            padding-top: 47px;
-
-            font-style: normal;
-            font-weight: bold;
-            font-size: 30px;
-            line-height: 57px;
-            display: flex;
-            align-items: center;
-
-            color: #ffffff;
-            margin: 0;
-        }
-
-        button {
-            height: 53px;
-            background: #c4c4c4;
-            margin: 0 auto;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            color: #000000;
-            padding: 0 32px;
-            svg{
-                margin-right: 20px;
-            }
-        }
-
-        ul {
-            width: 376px;
-            height: 180px;
-            padding-top: 17px;
-            margin: 0px 0px;
-
-            font-family: Roboto;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 18px;
-            line-height: 21px;
-            padding: 0px 0px;
-
-            li {
-                list-style: none;
-                margin-bottom: 15px;
-
-                a {
-                    color: #ffffff;
-                    text-decoration: none;
-                }
-            }
-        }
+      color: #ffffff;
+      margin: 0;
     }
+
+    button {
+      height: 53px;
+      color: #000000;
+      background: #c4c4c4;
+      margin: 0 auto;
+      font-size: 18px;
+      padding: 0 32px;
+
+      svg {
+        margin-right: 20px;
+      }
+    }
+
+    ul {
+      width: 376px;
+      height: 180px;
+      padding-top: 17px;
+      margin: 0px 0px;
+
+      font-size: 18px;
+      line-height: 21px;
+      padding: 0px 0px;
+
+      li {
+        list-style: none;
+        margin-bottom: 15px;
+
+        a {
+          color: #ffffff;
+          text-decoration: none;
+        }
+      }
+    }
+  }
 }

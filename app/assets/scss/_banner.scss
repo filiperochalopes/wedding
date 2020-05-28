@@ -1,48 +1,53 @@
 #banner {
-  div {
+  > .container {
+    position: relative;
     width: 100vw;
     max-width: 900px;
+    padding: 0 16px;
+    margin: 0 auto;
+    box-sizing: border-box;
 
     img {
       width: 1031px;
-      height: 1031px;
+      height: auto;
       border-radius: 50%;
-      border-style: solid;
-      border-width: 50px;
-      border-color: $green;
+      border: 50px solid $green;
+      box-sizing: border-box;
+      transform: translateX(-188px);
     }
 
     .yellow_circle {
+      position: absolute;
+      top: 550px;
+      right: 0px;
       width: 300px;
       height: 300px;
       border-radius: 50%;
-      background-color: $yellow;
+      background: $yellow;
+      padding: 80px 40px;
+      box-sizing: border-box;
+      text-align: center;
 
       h2 {
-        font-style: normal;
         font-weight: normal;
         font-size: 38px;
         line-height: 18px;
-
-        display: flex;
-        align-items: center;
-        text-align: center;
-        letter-spacing: -0.07em;
+        display: inline-block;
+        letter-spacing: 2px;
+        margin: 0;
+        margin-bottom: 20px;
       }
 
       button {
         margin: 0 auto;
-        width: 250px;
-        height: 69px;
         font-size: 40px;
+        padding: 20px;
         font-weight: normal;
         text-align: center;
         line-height: 18px;
-
-        display: flex;
-        align-items: center;
-        letter-spacing: -0.06em;
-
+        white-space: nowrap;
+        font-family: Charmonman;
+        letter-spacing: -2.5px;
         color: #000000;
 
         background: #92e3b2;
