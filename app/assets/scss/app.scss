@@ -1,5 +1,6 @@
 @import "header";
 @import "footer";
+@import "banner";
 
 html {
     padding: 0;
@@ -13,7 +14,6 @@ button{
 body {
     padding: 0;
     margin: 0;
-    background-color: green;
     font-family: "Roboto", sans-serif;
 
     h1,
