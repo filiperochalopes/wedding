@@ -4,12 +4,14 @@
 @import "banner";
 @import "nosso_amor";
 
-html, body, ul {
+html,
+body,
+ul {
     padding: 0;
     margin: 0;
 }
 
-button{
+button {
     outline: none;
     border: none;
 }
@@ -30,4 +32,124 @@ body {
     max-width: 900px;
     padding: 0 16px;
     margin: 0 auto;
+}
+#nosso-amor {
+    .yellow_circle {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: $yellow;
+        padding: 80px 40px;
+        box-sizing: border-box;
+        margin: 0 42px;
+    }
+    div {
+        p {
+            text-align: right;
+            width: 388px;
+            margin: 20px auto;
+        }
+        .green_circle {
+            width: 457px;
+            height: 457px;
+            left: 713px;
+            border-radius: 50%;
+            background: $green;
+            padding: 80px 40px;
+            box-sizing: border-box;
+            margin: 20px 42px;
+        }
+    }
+}
+#versiculo {
+    .vcl {
+        width: 593px;
+        height: 204px;
+        font-family: Charmonman;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 38px;
+        line-height: 50px;
+        align-items: center;
+        letter-spacing: 0.05em;
+        color: #0c0c0c;
+    }
+}
+#flower {
+    > div {
+        img {
+            width: 279px;
+            height: 190px;
+        }
+    }
+}
+
+#save {
+    > div {
+        width: 868px;
+        height: 364px;
+        background: #c4c4c4;
+        padding: 80px 40px;
+        box-sizing: border-box;
+        margin: 20px 42px;
+    }
+}
+#nossas-aventuras {
+    > div {
+        h3 {
+            position: absolute;
+            width: 581px;
+            height: 75px;
+            font-family: Charmonman;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 48px;
+            line-height: 91px;
+            display: flex;
+            align-items: center;
+            color: #000000;
+        }
+        p {
+            width: 502px;
+            height: 46px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 21px;
+            display: flex;
+            align-items: center;
+            color: #000000;
+        }
+        div {
+            width: 868px;
+            height: 364px;
+            background: #c4c4c4;
+            padding: 80px 40px;
+            box-sizing: border-box;
+            margin: 20px 42px;
+        }
+    }
+}
+#final {
+    div {
+        align-items: center;
+        p {
+        }
+        h3 {
+            width: 491px;
+            font-family: Roboto;
+            font-style: italic;
+            font-weight: bold;
+            font-size: 68px;
+            line-height: 18px;
+            text-align: center;
+            font-feature-settings:;
+
+            color: #7c2a2e;
+
+            border: 1px solid #ecef49;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+    }
 }
