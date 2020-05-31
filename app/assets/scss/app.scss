@@ -75,18 +75,72 @@ body {
         color: #0c0c0c;
     }
 }
+#gift {
+    display: flex;
+    img {
+        width: 322px;
+        height: 246px;
+        transform: rotate(-15deg);
+    }
+    div {
+        .um {
+            width: 469px;
+            height: 73px;
+            background: #ecef49;
+            border: 3px solid #9d9f37;
+            box-shadow: inset 0px -5px 4px rgba(0, 0, 0, 0.5);
+            border-radius: 11px;
+            margin: 20px auto;
+            font-family: Charmonman;
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 18px;
+        }
+    }
+    div {
+        .dois {
+            width: 199px;
+            height: 49px;
+            background: #92e3b2;
+            border: 3px solid #5eaa7c;
+            box-shadow: inset 0px -5px 4px rgba(0, 0, 0, 0.5);
+            border-radius: 11px;
+            margin-right: 23px;
+            font-size: 16px;
+            line-height: 18px;
+        }
+    }
+    div {
+        .tres {
+            width: 247px;
+            height: 49px;
+            background: #d44b51;
+            border: 3px solid #7c2a2e;
+            box-shadow: inset 0px -5px 4px rgba(0, 0, 0, 0.5);
+            border-radius: 11px;
+            margin: 10px auto;
+            font-size: 16px;
+            line-height: 18px;
+            align-items: center;
+            text-align: center;
+
+            color: #ffffff;
+        }
+    }
+}
+
 #flower {
     > div {
         img {
             width: 279px;
             height: 190px;
+            align-items: center;
         }
     }
 }
 
 #save {
     > div {
-        width: 868px;
         height: 364px;
         background: #c4c4c4;
         padding: 80px 40px;
@@ -110,7 +164,6 @@ body {
             color: #000000;
         }
         p {
-            width: 502px;
             height: 46px;
             font-family: Roboto;
             font-style: normal;
@@ -132,18 +185,42 @@ body {
     }
 }
 #final {
+    margin: 0px;
+    div {
+        display: inline;
+        p {
+            height: 35px;
+            font-family: Roboto;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 18px;
+            align-items: center;
+            text-align: center;
+            letter-spacing: -0.07em;
+        }
+        h2 {
+            height: 48px;
+            font-family: Charmonman;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 18px;
+            align-items: center;
+            text-align: center;
+            font-feature-settings: "cpsp" on;
+        }
+    }
     div {
         align-items: center;
-       
+
         h3 {
-            width: 491px;
             font-family: Roboto;
             font-style: italic;
             font-weight: bold;
             font-size: 68px;
             line-height: 18px;
             text-align: center;
-
 
             color: #7c2a2e;
 
