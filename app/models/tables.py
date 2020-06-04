@@ -1,60 +1,74 @@
 from app import db
 
 
-class User(db.Model):
-    __tablename__= "users"
+class Convidados(db.Model):
+    __tablename__= "convidados"
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String, unique=True)
-    password = db.Column(db.String)
-    name = db.Column(db.String)
-    email = db.Column(db.String, unique=True)
+    nome = db.Column(db.String(40), unique=True)
+    numero_convidados = db.Column(db.Integer)
+    confirmou_presenca = db.Column(db.DateTime)
+    fk_noivo = db.Column(db.Integer, db.ForeignKey('fk_noivo') unique=True)
 
-    def __init__(self, username, password, name, email):
-        self.username = username
-        self.password = password
-        self.name = name
-        self.email = email
+    convidados = db.relationship('Noivos', foreign_keys=fk_noivo)
 
-    def __repr__(self):
-        return "<User %r>" % self.username
-
-
-class Post(db.Model):
-    __tablename__ = "posts"
+class Noivos(db.Model):
+    __tablename__ = "noivos"
 
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.Text)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    nome = db.Column(db.String(40))
+    email = db.Column(db.String(80), unique=True)
+    senha = db.Column(db.String(128))
 
-    user = db.relationship('User', foreign_keys=user_id)
-
-    def __init__(self, content, user_id):
-        self.content = content
-        self.user_id= user_id
-
-    def __repr__(self):
-        return "<post %r>" % self.id
-
-class Follow(db.Model):
-    __tablename__ = "follow"
+    
+class Presente(db.Model):
+    __tablename__ = "presentes"
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    follow_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
-    user = db.relationship('User', foreign_keys=user_id)
-    follow = db.relationship('User', foreign_keys=follow_id)
+    nome = db.Column(db.String(128))
+    imagem = db.Column(db.String(128))
+    price = db.Column(db.Float(10,2))
 
 
-class Gift(db.Model):
-    __tablename__ = "gifts"
+class Referencia_presentes(db.Model):
+    __tablename__ = "referencia_presentes"
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    price = db.Column(db.Float)
+    link_referencia = db.Column(db.Texto)
+    fk_presente = db.Column(db.Integer,db.ForeignKey('fk_presente'))
+
+    referencias = db.relationship('Presentes', foreign_keys=fk_presente)
 
 
-    def __init__(self, name, price):
-        self.name = name
-        self.price = price
+    
+class Presentes_comprados(db.Model):
+    __tablename__ = "presentes_comprados"
+
+    id = db.Column(db.Integer, primary_key-True)
+    nome = db.Column(db.String(40))
+    email = db.Column(db.String(60))
+    fk_presente = db.Column(db.Integer,db.ForeignKey('fk_presente'))
+    mensagem = db.Column(db.Text)
+    id_transacao = db.Column(db.String(128))
+
+    comprados = db.relationship('Presentes', foreign_keys=fk_presente)
+
+
+class Doacoes(db.Model):
+    __tablename__=doaçoes
+
+    id = db.Column(db.Integer, primary_key-True)
+    nome = db.Column(db.String(40))
+    email = db.Column(db.String(60))
+    valor = db.Column(db.Float)
+    mensagem = db.Column(db.Text)
+    id_transacao = db.Column(db.String(128))
+
+
+class mensagens(db.Model):
+    __tablename__= mensagens
+
+    id = db.Column(db.Integer, primary_key-True)
+    nome = db.Column(db.String(40))
+    email = db.Column(db.String(60))
+    mensagem = db.Column(db.Text)
