@@ -2,10 +2,12 @@ from flask import render_template, jsonify
 from app import app, db
 import json
 
-from app.models.tables import User, Gift
 from app.models.forms import LoginForm
 
-@app.route("/index/")
+@app.route("/hello_world")
+def hollo_world():
+    return "Hello World"
+
 @app.route("/")
 def index():
     return render_template('index.html')
@@ -21,21 +23,8 @@ def login():
     return render_template('login.html',
                             form=form)
 
-@app.route("/adicionar_presente/<name>/<price>")
-def add_gift(name,price):
-    gift = Gift(
-        name=name,
-        price=price
-    )
-    db.session.add(gift)
-    db.session.commit()
-    return {
-        "name":name,
-        "price":price
-    }
-
-@app.route("/visualizar_presentes")
-def view_gift():
-     gifts = db.session.query(Gift).all()
-     print(gifts)
-     return render_template('presentes.html', gifts=gifts)
+# @app.route("/visualizar_presentes")
+# def view_gift():
+#      gifts = db.session.query(Gift).all()
+#      print(gifts)
+#      return render_template('presentes.html', gifts=gifts)

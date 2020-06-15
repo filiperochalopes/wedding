@@ -8,7 +8,7 @@ class Convidados(db.Model):
     nome = db.Column(db.String(40), unique=True)
     numero_convidados = db.Column(db.Integer)
     confirmou_presenca = db.Column(db.DateTime)
-    fk_noivo = db.Column(db.Integer, db.ForeignKey('fk_noivo') unique=True)
+    fk_noivo = db.Column(db.Integer, db.ForeignKey('fk_noivo'), unique=True)
 
     convidados = db.relationship('Noivos', foreign_keys=fk_noivo)
 
@@ -30,21 +30,21 @@ class Presente(db.Model):
     price = db.Column(db.Float(10,2))
 
 
-class Referencia_presentes(db.Model):
+class ReferenciaPresente(db.Model):
     __tablename__ = "referencia_presentes"
 
     id = db.Column(db.Integer, primary_key=True)
-    link_referencia = db.Column(db.Texto)
+    link_referencia = db.Column(db.Text)
     fk_presente = db.Column(db.Integer,db.ForeignKey('fk_presente'))
 
     referencias = db.relationship('Presentes', foreign_keys=fk_presente)
 
 
     
-class Presentes_comprados(db.Model):
+class PresentesComprado(db.Model):
     __tablename__ = "presentes_comprados"
 
-    id = db.Column(db.Integer, primary_key-True)
+    id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(40))
     email = db.Column(db.String(60))
     fk_presente = db.Column(db.Integer,db.ForeignKey('fk_presente'))
@@ -55,9 +55,9 @@ class Presentes_comprados(db.Model):
 
 
 class Doacoes(db.Model):
-    __tablename__=doaçoes
+    __tablename__= "doacoes"
 
-    id = db.Column(db.Integer, primary_key-True)
+    id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(40))
     email = db.Column(db.String(60))
     valor = db.Column(db.Float)
@@ -65,10 +65,10 @@ class Doacoes(db.Model):
     id_transacao = db.Column(db.String(128))
 
 
-class mensagens(db.Model):
-    __tablename__= mensagens
+class Mensagens(db.Model):
+    __tablename__= "mensagens"
 
-    id = db.Column(db.Integer, primary_key-True)
+    id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(40))
     email = db.Column(db.String(60))
     mensagem = db.Column(db.Text)
