@@ -8,3 +8,5 @@ flask_sqlalchemy
 Flask-Scss
 flask_migrate
 flask-wtf
+autopep8
+flask_alembic
