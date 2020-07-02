@@ -4,13 +4,16 @@ import json
 
 from app.models.forms import LoginForm
 
+
 @app.route("/hello_world")
 def hollo_world():
     return "Hello World"
 
+
 @app.route("/")
 def index():
     return render_template('index.html')
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -21,7 +24,7 @@ def login():
     else:
         print(form.errors)
     return render_template('login.html',
-                            form=form)
+                           form=form)
 
 # @app.route("/visualizar_presentes")
 # def view_gift():

@@ -10,3 +10,6 @@ flask_migrate
 flask-wtf
 autopep8
 flask_alembic
+Flask-Script
+Flask-Migrate
+pymysql
