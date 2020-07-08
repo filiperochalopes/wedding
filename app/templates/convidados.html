@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}- Convidados{% endblock %}
+{% block content %}
+<section>
+    <br><br>
+    <br><br>
+    <br><br>
+    <table>
+    {% for convidado in convidados %}
+        <tr><td>{{convidado.nome}}</td></tr>
+    {% endfor %}
+</table>
+
+</section>
+{% endblock %}
