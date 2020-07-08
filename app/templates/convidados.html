@@ -5,11 +5,31 @@
     <br><br>
     <br><br>
     <br><br>
-    <table>
-    {% for convidado in convidados %}
-        <tr><td>{{convidado.nome}}</td></tr>
-    {% endfor %}
-</table>
+    <table id="convidados" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>N</th>
+                <th>Noivo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for convidado in convidados %}
+        <tr>
+            <td>{{convidado.nome}}</td>
+            <td>{{convidado.numero_convidados}}</td>
+            <td>{{convidado.noivo.nome}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Nome</th>
+                <th>N</th>
+                <th>Conjuge</th>
+            </tr>
+        </tfoot>
+    </table>
 
 </section>
 {% endblock %}

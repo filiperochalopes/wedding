@@ -10,7 +10,7 @@ class Convidados(db.Model):
     confirmou_presenca = db.Column(db.DateTime)
     fk_noivo = db.Column(db.Integer, db.ForeignKey('noivos.id'), unique=True)
 
-    noivo = db.relationship('Noivos', uselist=False, foreign_keys=fk_noivo)
+    noivo = db.relationship('Noivos', uselist=False, foreign_keys=fk_noivo, lazy="selectin")
 
 
 class Noivos(db.Model):
