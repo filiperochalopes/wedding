@@ -3,6 +3,7 @@ from app import app, db
 import json
 
 from app.models.forms import LoginForm
+from app.models.tables import Convidados
 
 
 @app.route("/hello_world")
@@ -14,6 +15,10 @@ def hollo_world():
 def index():
     return render_template('index.html')
 
+@app.route("/convidados")
+def convidados():
+    convidados = db.session.query(Convidados).all()
+    return render_template('convidados.html', convidados=convidados)
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

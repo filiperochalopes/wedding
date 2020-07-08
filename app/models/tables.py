@@ -30,7 +30,7 @@ class Presente(db.Model):
     imagem = db.Column(db.String(128))
     preco = db.Column(db.Float(10, 2))
 
-    referencias = db.relationship('Presentes', backref='presente')
+    referencias = db.relationship('ReferenciaPresente', backref='presente')
 
 
 class ReferenciaPresente(db.Model):
@@ -52,7 +52,7 @@ class PresentesComprado(db.Model):
     id_transacao = db.Column(db.String(128))
 
     presente = db.relationship(
-        'Presentes',
+        'Presente',
         uselist=False,
         foreign_keys=[fk_presente])
 
