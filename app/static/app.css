@@ -269,13 +269,6 @@ html, body, ul {
     display: flex;
     align-items: center;
     color: #000000; }
-    #nossas-aventuras > div div {
-      width: 868px;
-      height: 364px;
-      background: #c4c4c4;
-      padding: 80px 40px;
-      box-sizing: border-box;
-      margin: 20px 42px; }
 
 #final {
   margin: 0px; }
