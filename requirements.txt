@@ -13,3 +13,4 @@ flask_alembic
 Flask-Script
 Flask-Migrate
 pymysql
+flup==1.0.3
