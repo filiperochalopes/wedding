@@ -11,6 +11,5 @@ flask-wtf
 autopep8
 flask_alembic
 Flask-Script
-Flask-Migrate
 pymysql
 flup==1.0.3
