@@ -44,8 +44,7 @@ jobs:
       uses: easingthemes/ssh-deploy@v2.1.1
       env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-avzh --progress --delete --exclude .well-known --exclude .htaccess"
-          SOURCE: "/"
+          ARGS: "-avzhr --progress --delete --exclude .well-known --exclude .htaccess"
           REMOTE_HOST: filipelopes.me
           REMOTE_USER: filipelo
           REMOTE_PORT: 2222
