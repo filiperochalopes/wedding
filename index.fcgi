@@ -1,4 +1,4 @@
-#!/usr/bin/scl enable python35 -- /home1/filipelo/.venv-filipeelore.love
+#!/home1/filipelo/.venv-filipeelore.love/bin/python
 
 import os, sys
 sys.path.insert(0, "/home1/filipelo/filipeelore.love")
