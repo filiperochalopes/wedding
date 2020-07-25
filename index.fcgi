@@ -1,6 +1,6 @@
 #!/home1/filipelo/.venv-filipeelore.love/bin/python
 
-import os, sys
+import sys
 sys.path.insert(0, "/home1/filipelo/filipeelore.love")
 
 from flup.server.fcgi import WSGIServer
@@ -12,6 +12,10 @@ class ScriptNameStripper(object):
 
    def __call__(self, environ, start_response):
        environ['SCRIPT_NAME'] = ''
+       environ['REQUEST_METHOD'] = 'GET'
+       environ['SERVER_NAME'] = 'filipeelore.love'
+       environ['SERVER_PORT'] = '443'
+       environ['SERVER_PROTOCOL'] = 'HTTP/1.1'
        return self.app(environ, start_response)
 
 app = ScriptNameStripper(app)
