@@ -15,17 +15,24 @@ def hollo_world():
 def index():
     return render_template('index.html')
 
+
 @app.route("/convidados")
 def convidados():
-    convidados = db.session.query(Convidados).all()
-    for c in convidados:
-        print(c.__dict__)
+    try:
+        convidados = db.session.query(Convidados).all()
+        for c in convidados:
+            print(c.__dict__)
+    except:
+        print('Não foi possível conectar ao banco')
+        convidados = []
     return render_template('convidados.html', convidados=convidados)
+
 
 @app.route("/hello")
 def hello():
     '''Apenas uma página de teste que não tenha requisição de banco para teste'''
     return render_template('hello.html')
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
