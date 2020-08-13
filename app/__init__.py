@@ -9,8 +9,10 @@ dictConfig({
     }},
     'handlers': {'wsgi': {
         'class': 'logging.StreamHandler',
+        'level': 'INFO',
+        'formatter': 'default',
         'stream': 'ext://flask.logging.wsgi_errors_stream',
-        'formatter': 'default'
+        'filename': 'app.log'
     }},
     'root': {
         'level': 'INFO',
