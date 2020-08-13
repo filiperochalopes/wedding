@@ -7,13 +7,20 @@ dictConfig({
     'formatters': {'default': {
         'format': '[%(asctime)s] %(levelname)s in %(module)s: %(message)s',
     }},
-    'handlers': {'wsgi': {
-        'class': 'logging.StreamHandler',
-        'level': 'INFO',
-        'formatter': 'default',
-        'stream': 'ext://flask.logging.wsgi_errors_stream',
-        'filename': 'app.log'
-    }},
+    'handlers': {
+        'wsgi': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'default',
+            'stream': 'ext://flask.logging.wsgi_errors_stream',
+        },
+        'file': {
+            'class' : 'logging.handlers.RotatingFileHandler',
+            'formatter': 'precise',
+            'filename': 'app.log',
+            'maxBytes': 1024,
+            'backupCount': 3,
+        }
+    },
     'root': {
         'level': 'INFO',
         'handlers': ['wsgi']
