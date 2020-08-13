@@ -22,6 +22,11 @@ def convidados():
         print(c.__dict__)
     return render_template('convidados.html', convidados=convidados)
 
+@app.route("/hello")
+def hello():
+    '''Apenas uma página de teste que não tenha requisição de banco para teste'''
+    return render_template('hello.html')
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     form = LoginForm()

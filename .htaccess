@@ -1,4 +1,6 @@
 AddHandler fcgid-script .fcgi
 RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://filipeelore.love/$1 [R,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.fcgi/$1 [QSA,L]
