@@ -9,12 +9,8 @@ dictConfig({
     }},
     'handlers': {
         'wsgi': {
-            'class': 'logging.StreamHandler',
+            'class': 'logging.handlers.RotatingFileHandler',
             'formatter': 'default',
-            'stream': 'ext://flask.logging.wsgi_errors_stream',
-        },
-        'file': {
-            'class' : 'logging.handlers.RotatingFileHandler',
             'formatter': 'precise',
             'filename': 'app.log',
             'maxBytes': 1024,
