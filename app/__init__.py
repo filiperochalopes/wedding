@@ -11,7 +11,6 @@ dictConfig({
         'wsgi': {
             'class': 'logging.handlers.RotatingFileHandler',
             'formatter': 'default',
-            'formatter': 'precise',
             'filename': 'app.log',
             'maxBytes': 1024,
             'backupCount': 3,
