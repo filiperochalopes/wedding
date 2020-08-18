@@ -14,6 +14,7 @@ dictConfig({
             'filename': 'app.log',
             'maxBytes': 1024,
             'backupCount': 3,
+            'level': 'DEBUG',
         }
     },
     'root': {
