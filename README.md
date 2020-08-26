@@ -12,10 +12,16 @@ flask db upgrade head
 ```sh
 export FLASK_APP=main.py
 export FLASK_ENV=development
-flask run --host=0.0.0.0
+flask run --host=0.0.0.0 --port=4444
 ```
 
 ## Autopep8
 ```sh
 autopep8 --in-place --aggressive --aggressive ./app/**/*.py*
 ```
+
+## Run production
+```sh
+gunicorn app:main -b localhost:5000
+```
+
