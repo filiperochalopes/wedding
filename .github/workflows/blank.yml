@@ -52,11 +52,12 @@ jobs:
           REMOTE_PORT: 22022
           TARGET: /var/www/filipeelore.love
     - name: Execute SSH commmands on remote server
-      uses: JimCronqvist/action-ssh@master
+      uses: fifsky/ssh-action@master
       with:
-        hosts: 'root@forest.orango.io:22022'
-        privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
-        debug: true
+        host: forest.orango.io
+        port: 22022
+        user: root
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
         command: |
           cd /var/www/filipeelore.love
           pip install -r requirements.txt
