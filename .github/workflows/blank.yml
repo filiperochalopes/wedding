@@ -45,9 +45,21 @@ jobs:
       uses: easingthemes/ssh-deploy@v2.1.1
       env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-avzhr --progress --delete --exclude .well-known --exclude .htaccess"
+          ARGS: "-avzhr --progress --delete --exclude .python-version"
           SOURCE: ""
-          REMOTE_HOST: filipelopes.me
-          REMOTE_USER: filipelo
-          REMOTE_PORT: 2222
-          TARGET: /home1/filipelo/filipeelore.love
+          REMOTE_HOST: forest.orango.io
+          REMOTE_USER: root
+          REMOTE_PORT: 22022
+          TARGET: /var/www/filipeelore.love
+    - name: Execute SSH commmands on remote server
+    uses: JimCronqvist/action-ssh@master
+    with:
+      hosts: 'root@forest.orango.io:22022'
+      privateKey: ${{ secrets.PRIVATE_KEY }}
+      command: |
+        cd /var/www/filipeelore.love
+        pip install -r requirements.txt
+        supervisorctl reread
+        supervisorctl update
+        supervisorctl restart filipeelore
+

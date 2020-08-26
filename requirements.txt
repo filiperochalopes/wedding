@@ -13,3 +13,4 @@ flask_alembic
 Flask-Script
 pymysql
 flup==1.0.3
+gunicorn
