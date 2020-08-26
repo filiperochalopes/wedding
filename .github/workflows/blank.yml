@@ -55,7 +55,7 @@ jobs:
       uses: JimCronqvist/action-ssh@master
       with:
         hosts: 'root@forest.orango.io:22022'
-        privateKey: ${{ secrets.PRIVATE_KEY }}
+        privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
         command: |
           cd /var/www/filipeelore.love
           pip install -r requirements.txt
