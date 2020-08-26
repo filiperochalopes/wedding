@@ -56,6 +56,7 @@ jobs:
       with:
         hosts: 'root@forest.orango.io:22022'
         privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
+        debug: true
         command: |
           cd /var/www/filipeelore.love
           pip install -r requirements.txt
