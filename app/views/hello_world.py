@@ -10,24 +10,6 @@ from app.models.tables import Convidados
 def hollo_world():
     return "Hello World"
 
-
-@app.route("/")
-def index():
-    return render_template('index.html')
-
-
-@app.route("/convidados")
-def convidados():
-    try:
-        convidados = db.session.query(Convidados).all()
-        for c in convidados:
-            print(c.__dict__)
-    except:
-        print('Não foi possível conectar ao banco')
-        convidados = []
-    return render_template('convidados.html', convidados=convidados)
-
-
 @app.route("/hello")
 def hello():
     '''Apenas uma página de teste que não tenha requisição de banco para teste'''
