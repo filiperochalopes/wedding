@@ -1,7 +1,7 @@
 from flask import render_template
 from app import app, db
 
-from app.models.tables import Convidados
+from app.models.Models import Convidados
 
 @app.route("/convidados")
 def convidados():

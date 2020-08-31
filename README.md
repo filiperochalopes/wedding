@@ -25,3 +25,7 @@ autopep8 --in-place --aggressive --aggressive ./app/**/*.py*
 gunicorn app:main -b localhost:5000
 ```
 
+## Atualização rápida
+```
+rsync -azP / hostgator_orango:/var/www/filipeelore.love --progress --delete --exclude .python-version
+```

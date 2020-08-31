@@ -2,8 +2,8 @@ from flask import render_template, jsonify
 from app import app, db
 import json
 
-from app.models.forms import LoginForm
-from app.models.tables import Convidados
+from app.models.Forms import LoginForm
+from app.models.Models import Convidados
 
 
 @app.route("/hello_world")

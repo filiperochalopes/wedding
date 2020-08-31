@@ -1,5 +1,11 @@
 from app import db
 
+class Categoria(db.Model):
+    __tablename__ = "categorias"
+
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(40), unique=True)
+
 
 class Convidados(db.Model):
     __tablename__ = "convidados"
@@ -8,9 +14,11 @@ class Convidados(db.Model):
     nome = db.Column(db.String(40), unique=True)
     numero_convidados = db.Column(db.Integer)
     confirmou_presenca = db.Column(db.DateTime)
-    fk_noivo = db.Column(db.Integer, db.ForeignKey('noivos.id'), unique=True)
+    fk_noivo = db.Column(db.Integer, db.ForeignKey('noivos.id'), )
+    fk_categoria = db.Column(db.Integer, db.ForeignKey('categorias.id'))
 
     noivo = db.relationship('Noivos', uselist=False, foreign_keys=fk_noivo, lazy="selectin")
+    categoria = db.relationship('Categoria', uselist=False, foreign_keys=fk_categoria, lazy="selectin")
 
 
 class Noivos(db.Model):
@@ -29,8 +37,10 @@ class Presente(db.Model):
     nome = db.Column(db.String(128))
     imagem = db.Column(db.String(128))
     preco = db.Column(db.Float(10, 2))
+    fk_categoria = db.Column(db.Integer, db.ForeignKey('categorias.id'))
 
     referencias = db.relationship('ReferenciaPresente', backref='presente')
+    categoria = db.relationship('Categoria', uselist=False, foreign_keys=fk_categoria, lazy="selectin")
 
 
 class ReferenciaPresente(db.Model):
