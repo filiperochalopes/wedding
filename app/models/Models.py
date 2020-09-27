@@ -1,4 +1,9 @@
 from app import db
+from sqlalchemy.dialects.mysql.base import MSBinary
+import uuid
+
+def generate_uuid():
+    return str(uuid.uuid4())
 
 class Categoria(db.Model):
     __tablename__ = "categorias"
@@ -14,6 +19,7 @@ class Convidados(db.Model):
     nome = db.Column(db.String(40), unique=True)
     numero_convidados = db.Column(db.Integer)
     confirmou_presenca = db.Column(db.DateTime)
+    convite_uuid = db.Column(db.String(64), default=generate_uuid)
     fk_noivo = db.Column(db.Integer, db.ForeignKey('noivos.id'), )
     fk_categoria = db.Column(db.Integer, db.ForeignKey('categorias.id'))
 
@@ -35,7 +41,7 @@ class Presente(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(128))
-    imagem = db.Column(db.String(128))
+    imagem = db.Column(db.String(512))
     preco = db.Column(db.Float(10, 2))
     fk_categoria = db.Column(db.Integer, db.ForeignKey('categorias.id'))
 
@@ -85,3 +91,11 @@ class Mensagens(db.Model):
     nome = db.Column(db.String(40))
     email = db.Column(db.String(60))
     mensagem = db.Column(db.Text)
+
+
+class Configuracoes(db.Model):
+    __tablename__ = "configuracoes"
+
+    id = db.Column(db.Integer, primary_key=True)
+    chave = db.Column(db.String(40))
+    valor = db.Column(db.String(64))

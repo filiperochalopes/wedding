@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}- Convidados{% endblock %}
+{% block content %}
+<section>
+    <div id="convite">
+        <p>Texto da bíblia</p>
+        <p>Venha participar dessa celebração de amor e festejar conosco nossa união!</p>
+        <p>Filipe e Lore (estilizar) convida</p>
+        <p>{{convidado.nome}}</p>
+        <p>Para celebrar...</p>
+        <ul>
+            <li>Local:</li>
+            <li>Horário:</li>
+        </ul>
+        <button>Confirmar Presença</button>
+    </div>
+</section>
+{% endblock %}

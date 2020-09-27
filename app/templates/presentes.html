@@ -1,13 +1,22 @@
 {% extends 'base.html' %}
-
+{% block title %}- Presentes{% endblock %}
 {% block content %}
-{% for i in range(11) %}
- {{ i }}
-{% endfor %}
-
-<ul>
-{% for gift in gifts %}
- <li>{{ gift.name }} R$ {{ gift.price }}</li>
-{% endfor %}
-</ul>
+<section id="presentes">
+    <br><br>
+    <br><br>
+    <br><br>
+    <h1>Presentes</h1>
+    <p>Olá! Muito obrigado por querer ajudar, somos muito gratos por qualquer tipo de ajuda, temos de coisas pequenas à
+        grandes! Não esqueça de nos mandar uma mensagem após dar o presente. Esperamos você em nosso casamento!</p>
+    <div id="lista_presentes">
+        {% for presente in presentes %}
+        <div>
+            <h3>{{presente.nome}}</h3>
+            <img src="{{presente.imagem}}" />
+            <span>{{presente.preco}}</span>
+            <button>Presentear</button>
+        </div>
+        {% endfor %}
+    </div>
+</section>
 {% endblock %}

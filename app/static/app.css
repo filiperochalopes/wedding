@@ -11,7 +11,6 @@ body > header {
   body > header button {
     width: 40px;
     height: 40px;
-    background: #000000;
     position: absolute;
     top: 10px;
     left: 10px;
@@ -22,7 +21,7 @@ body > header {
         list-style: none; }
         body > header ul li {
           display: inline;
-          margin: 0 5px;
+          margin: 0 10px;
           font-size: 20px;
           line-height: 40px; }
           body > header ul li a {
@@ -32,6 +31,13 @@ body > header {
             color: #242424; }
             body > header ul li a:hover {
               text-decoration: underline; }
+              body > header ul li a.is_disabled {
+                color: currentColor;
+                cursor: not-allowed;
+                opacity: 0.5;
+                text-decoration: none; }
+                body > header ul li a.is_disabled:hover {
+                  text-decoration: none; }
 
 footer {
   width: 100vw;
@@ -139,6 +145,40 @@ footer {
   #nosso-amor .container > div:nth-child(1) > div:last-child {
     flex: 1 0 auto; }
 
+#lista_presentes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  #lista_presentes > div {
+    flex: 1 0 auto;
+    width: 180px;
+    background: #ebebeb;
+    border: 1px solid #5a5a5a;
+    padding: 25px;
+    margin: 5px; }
+    #lista_presentes > div img {
+      width: 100px; }
+      #lista_presentes > div button {
+        background: #427757;
+        color: white;
+        cursor: pointer;
+        padding: 10px 20px;
+        font-size: 18px;
+        display: block;
+        border-radius: 15px; }
+        #lista_presentes > div button:hover {
+          background: #92e3b2; }
+
+#convite {
+  text-align: center;
+  margin: 30px;
+  padding: 30px;
+  border: 1px solid #ccc; }
+  #convite button {
+    padding: 25px 60px;
+    font-size: 18px; }
+
 html, body, ul {
   padding: 0;
   margin: 0; }
@@ -158,28 +198,34 @@ html, body, ul {
   max-width: 900px;
   padding: 0 16px;
   margin: 0 auto; }
+  .container main > section {
+    padding-top: 90px;
+    padding-bottom: 30px; }
+    .container main > section:first-child {
+      padding-top: 0;
+      padding-bottom: 30px; }
 
-  #nosso-amor .yellow_circle {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: #ecef49;
-    padding: 80px 40px;
-    box-sizing: border-box;
-    margin: 0 42px; }
-    #nosso-amor div p {
-      text-align: right;
-      width: 388px;
-      margin: 20px auto; }
-      #nosso-amor div .green_circle {
-        width: 457px;
-        height: 457px;
-        left: 713px;
-        border-radius: 50%;
-        background: #92e3b2;
-        padding: 80px 40px;
-        box-sizing: border-box;
-        margin: 20px 42px; }
+#nosso-amor .yellow_circle {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: #ecef49;
+  padding: 80px 40px;
+  box-sizing: border-box;
+  margin: 0 42px; }
+  #nosso-amor div p {
+    text-align: right;
+    width: 388px;
+    margin: 20px auto; }
+    #nosso-amor div .green_circle {
+      width: 457px;
+      height: 457px;
+      left: 713px;
+      border-radius: 50%;
+      background: #92e3b2;
+      padding: 80px 40px;
+      box-sizing: border-box;
+      margin: 20px 42px; }
 
 #versiculo .vcl {
   margin: 0 auto;
@@ -270,38 +316,43 @@ html, body, ul {
     align-items: center;
     color: #000000; }
 
-#final {
-  margin: 0px; }
-  #final div {
-    display: inline; }
-    #final div p {
-      height: 35px;
-      font-family: Roboto;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 18px;
-      line-height: 18px;
-      align-items: center;
-      text-align: center;
-      letter-spacing: -0.07em; }
-      #final div h2 {
-        height: 48px;
-        font-family: Charmonman;
+#breve {
+  text-align: center;
+  padding-bottom: 150px;
+  padding-top: 50px; }
+
+  #final {
+    margin: 0px; }
+    #final div {
+      display: inline; }
+      #final div p {
+        height: 35px;
+        font-family: Roboto;
         font-style: normal;
-        font-weight: bold;
-        font-size: 36px;
+        font-weight: normal;
+        font-size: 18px;
         line-height: 18px;
         align-items: center;
         text-align: center;
-        font-feature-settings: "cpsp" on; }
-  #final div {
-    align-items: center; }
-    #final div h3 {
-      font-family: Roboto;
-      font-style: italic;
-      font-weight: bold;
-      font-size: 68px;
-      line-height: 18px;
-      text-align: center;
-      color: #7c2a2e;
-      text-shadow: 0px 4px 4px #ecef49; }
+        letter-spacing: -0.07em; }
+        #final div h2 {
+          height: 48px;
+          font-family: Charmonman;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 36px;
+          line-height: 18px;
+          align-items: center;
+          text-align: center;
+          font-feature-settings: "cpsp" on; }
+    #final div {
+      align-items: center; }
+      #final div h3 {
+        font-family: Roboto;
+        font-style: italic;
+        font-weight: bold;
+        font-size: 68px;
+        line-height: 18px;
+        text-align: center;
+        color: #7c2a2e;
+        text-shadow: 0px 4px 4px #ecef49; }

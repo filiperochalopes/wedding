@@ -1,0 +1,33 @@
+#lista_presentes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    > div{
+        flex: 1 0 auto;
+        width: 180px;
+        background: #ebebeb;
+        border: 1px solid #5a5a5a;
+        padding: 25px;
+        margin: 5px;
+
+        img{
+            width: 100px;
+        }
+
+        button{
+            background: $dark_green;
+            color: white;
+            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 18px;
+            display: block;
+            border-radius: 15px;
+            
+            &:hover{
+                background: $green;
+            }
+        }
+    }
+}
