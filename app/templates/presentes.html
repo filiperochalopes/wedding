@@ -12,9 +12,9 @@
         {% for presente in presentes %}
         <div>
             <h3>{{presente.nome}}</h3>
-            <img src="{{presente.imagem}}" />
-            <span>{{presente.preco}}</span>
-            <button>Presentear</button>
+            <img src="/static/img/presentes/{{presente.imagem}}" />
+            <span>R$ {{presente.preco}}</span>
+            <button class="presentear-bt" data-price="{{presente.preco}}" data-title="{{presente.nome}}"">Presentear</button>
         </div>
         {% endfor %}
     </div>

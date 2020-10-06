@@ -14,30 +14,44 @@ body > header {
     position: absolute;
     top: 10px;
     left: 10px;
-    cursor: pointer; }
-    body > header nav {
-      text-align: center; }
-      body > header ul {
-        list-style: none; }
-        body > header ul li {
-          display: inline;
-          margin: 0 10px;
-          font-size: 20px;
-          line-height: 40px; }
-          body > header ul li a {
-            font-family: "Charmonman", cursive;
-            font-weight: bold;
-            text-decoration: none;
-            color: #242424; }
-            body > header ul li a:hover {
-              text-decoration: underline; }
-              body > header ul li a.is_disabled {
-                color: currentColor;
-                cursor: not-allowed;
-                opacity: 0.5;
-                text-decoration: none; }
-                body > header ul li a.is_disabled:hover {
-                  text-decoration: none; }
+    cursor: pointer;
+    display: none;
+    z-index: 10; }
+    @media (max-width: 768px) {
+      body > header button {
+        display: block;   }
+}
+  body > header nav {
+    text-align: center; }
+    @media (max-width: 768px) {
+      body > header nav {
+        display: none;   }
+}
+      @media (min-width: 769px) {
+        body > header nav {
+          display: block !important;   }
+}
+  body > header ul {
+    list-style: none; }
+    body > header ul li {
+      display: inline;
+      margin: 0 10px;
+      font-size: 20px;
+      line-height: 40px; }
+      body > header ul li a {
+        font-family: "Charmonman", cursive;
+        font-weight: bold;
+        text-decoration: none;
+        color: #242424; }
+        body > header ul li a:hover {
+          text-decoration: underline; }
+          body > header ul li a.is_disabled {
+            color: currentColor;
+            cursor: not-allowed;
+            opacity: 0.5;
+            text-decoration: none; }
+            body > header ul li a.is_disabled:hover {
+              text-decoration: none; }
 
 footer {
   width: 100vw;
