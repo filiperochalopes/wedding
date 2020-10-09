@@ -1,33 +1,51 @@
-#lista_presentes{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+#lista_presentes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  > div {
+    flex: 1 0 auto;
+    width: 180px;
+    background-image: linear-gradient(white 50px, #ccc);
+    border: 1px solid #5a5a5a;
+    padding: 25px;
+    margin: 5px;
+    position: relative;
+    padding-top: 150px;
+    padding-bottom: 50px;
 
     > div{
-        flex: 1 0 auto;
-        width: 180px;
-        background: #ebebeb;
-        border: 1px solid #5a5a5a;
-        padding: 25px;
-        margin: 5px;
-
-        img{
-            width: 100px;
-        }
-
-        button{
-            background: $dark_green;
-            color: white;
-            cursor: pointer;
-            padding: 10px 20px;
-            font-size: 18px;
-            display: block;
-            border-radius: 15px;
-            
-            &:hover{
-                background: $green;
-            }
+        img {
+          position: absolute;
+          top: 50px;
+          left: 0;
+          width: 100%;
+          height: auto;
+          object-fit:cover;
         }
     }
+
+    h3 {
+      font-family: Roboto;
+      font-size: 14px;
+      position: absolute;
+      left: 10px;
+      top: 10px;
+    }
+
+    button {
+      background: $dark_green;
+      color: white;
+      cursor: pointer;
+      padding: 10px 20px;
+      font-size: 18px;
+      display: block;
+      border-radius: 15px;
+
+      &:hover {
+        background: $green;
+      }
+    }
+  }
 }

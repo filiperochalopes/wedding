@@ -12,7 +12,7 @@
         {% for presente in presentes %}
         <div>
             <h3>{{presente.nome}}</h3>
-            <img src="/static/img/presentes/{{presente.imagem}}" />
+            <div><img src="/static/img/presentes/{{presente.imagem}}" /></div>
             <span>R$ {{presente.preco}}</span>
             <button class="presentear-bt" data-price="{{presente.preco}}" data-title="{{presente.nome}}"">Presentear</button>
         </div>
