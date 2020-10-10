@@ -9,14 +9,18 @@
     </h1>
     <div id="div_mais_informacoes_convidados">
         <p>Média de convidados por convite: {{estatisticas.media_convidados_por_convite}}</p>
-        <!-- {% for noivo in noivos %}
+        {% for nome, numero in estatisticas.categorias.items() %}
+        <p>{{nome}}: {{numero}}</p>
+        {% endfor %}
+        {% for nome, dados in estatisticas.noivos.items() %}
         <div>
+            <h2>{{nome}}</h2>
             <div id="noivo_1_chart"></div>
-            <div>
-                Total de convidados: {{convidados_noivo.total_convidados}}
-            </div>
+            {% for nome, numero in dados.items() %}
+            <p>{{nome}}: {{numero}}</p>
+            {% endfor %}
         </div>
-        {% endfor %} -->
+        {% endfor %}
     </div>
     <table id="convidados">
         <thead>
