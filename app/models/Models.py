@@ -12,7 +12,7 @@ class Categoria(db.Model):
     nome = db.Column(db.String(40), unique=True)
 
 
-class Convidados(db.Model):
+class Convidado(db.Model):
     __tablename__ = "convidados"
 
     id = db.Column(db.Integer, primary_key=True)
@@ -25,6 +25,9 @@ class Convidados(db.Model):
 
     noivo = db.relationship('Noivos', uselist=False, foreign_keys=fk_noivo, lazy="selectin")
     categoria = db.relationship('Categoria', uselist=False, foreign_keys=fk_categoria, lazy="selectin")
+
+    def __repr__(self):
+        return "<Convidado(nome='%s')>" % (self.nome)
 
 
 class Noivos(db.Model):
