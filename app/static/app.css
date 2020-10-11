@@ -185,6 +185,7 @@ footer {
 
 #carrinho {
   position: sticky;
+  top: 0;
   padding: 18px 40px;
   margin: 0 auto;
   background-color: #f1f1f1;
@@ -240,6 +241,32 @@ footer {
                     color: #000; }
                     #lista_presentes > div button.adicionado:hover {
                       transform: none; }
+
+.modal_wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  background-color: rgba(47, 85, 62, 0.6);
+  z-index: 99; }
+  .modal_wrap .cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%; }
+    .modal_wrap > section {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      max-width: 500px;
+      padding: 20px;
+      background-color: white; }
 
 #convite {
   text-align: center;

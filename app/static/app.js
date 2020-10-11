@@ -64,7 +64,7 @@ $(document).ready(function () {
           )
         )
       );
-      
+
       $(this).text("Presentear");
       $(this).removeClass("adicionado");
     }
@@ -81,6 +81,22 @@ $(document).ready(function () {
       ).toFixed(2)}`
     );
   });
+
+  $("#enviar_mensagem").click(function(){
+    $("#modal_mensagem").css("display", "block")
+  })
+
+  $(".close_modal_mensagem").click(function(){
+    $("#modal_mensagem").css("display", "none")
+  })
+
+  $("#checkout").click(function(){
+    $("#modal_presente").show()
+  })
+
+  $(".close_modal_presente").click(function(){
+    $("#modal_presente").hide()
+  })
 
   function pagar() {
     // inicia a instância do checkout
