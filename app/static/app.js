@@ -16,6 +16,73 @@ $(document).ready(function () {
   });
 
   $(".presentear-bt").click(function (e) {
+    let id = $(this).data("presente-id"),
+      title = $(this).data("title"),
+      price = $(this).data("price");
+
+    if (!$(this).hasClass("adicionado")) {
+      if (!localStorage.getItem("carrinho")) {
+        localStorage.setItem(
+          "carrinho",
+          JSON.stringify([
+            {
+              id,
+              title,
+              price,
+            },
+          ])
+        );
+      } else {
+        let itens = JSON.parse(localStorage.getItem("carrinho")),
+          itensIds = itens.reduce((acc, cur) => {
+            return [...acc, cur.id];
+          }, []);
+
+        if (!itensIds.includes(id)) {
+          localStorage.setItem(
+            "carrinho",
+            JSON.stringify([
+              ...itens,
+              {
+                id,
+                title,
+                price,
+              },
+            ])
+          );
+        }
+      }
+
+      $(this).text("Adicionado");
+      $(this).addClass("adicionado");
+    } else {
+      localStorage.setItem(
+        "carrinho",
+        JSON.stringify(
+          JSON.parse(localStorage.getItem("carrinho")).filter(
+            (item) => item.id !== id
+          )
+        )
+      );
+      
+      $(this).text("Presentear");
+      $(this).removeClass("adicionado");
+    }
+
+    $("#itens_carrinho").text(
+      JSON.parse(localStorage.getItem("carrinho")).length
+    );
+    $("#preco_carrinho").text(
+      `R$ ${parseFloat(
+        JSON.parse(localStorage.getItem("carrinho")).reduce(
+          (acc, cur) => acc + parseFloat(cur.price),
+          0
+        )
+      ).toFixed(2)}`
+    );
+  });
+
+  function pagar() {
     // inicia a instância do checkout
     var checkout = new PagarMeCheckout.Checkout({
       encryption_key: "ek_test_qedtchn5pAnzVpEqetVwP86Cw4FgBc",
@@ -29,7 +96,6 @@ $(document).ready(function () {
         console.log("The modal has been closed.");
       },
     });
-
     console.log(parseFloat($(this).data("price")).toString());
 
     checkout.open({
@@ -45,5 +111,5 @@ $(document).ready(function () {
         },
       ],
     });
-  });
+  }
 });

@@ -183,45 +183,63 @@ footer {
   #nosso-amor .container > div:nth-child(1) > div:last-child {
     flex: 1 0 auto; }
 
-#lista_presentes {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between; }
-  #lista_presentes > div {
-    flex: 1 0 auto;
-    width: 180px;
-    background-image: linear-gradient(white 190px, #919191);
-    border: 1px solid #919191;
-    margin: 5px;
-    position: relative;
-    border-radius: 5px;
-    overflow: hidden; }
-    #lista_presentes > div img {
-      width: 100%;
-      height: auto;
-      margin-top: 10px; }
-      #lista_presentes > div > div {
-        padding: 20px;
-        text-align: center; }
-        #lista_presentes > div h3 {
-          font-family: Roboto;
-          font-size: 14px; }
-          #lista_presentes > div button {
-            background: #427757;
-            box-shadow: 0 2px #2f553e;
-            color: white;
-            cursor: pointer;
-            padding: 10px 20px;
-            font-size: 18px;
-            display: inline-block;
-            border-radius: 10px;
-            transition: 0.2s all;
-            margin-top: 20px; }
-            #lista_presentes > div button:hover {
-              background: #55976f;
-              transform: translateY(-2px);
-              box-shadow: 0 4px #2f553e; }
+#carrinho {
+  position: sticky;
+  padding: 18px 40px;
+  margin: 0 auto;
+  background-color: #f1f1f1;
+  z-index: 5; }
+
+  #lista_presentes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between; }
+    #lista_presentes > div {
+      flex: 1 0 auto;
+      width: 250px;
+      background-image: linear-gradient(white 190px, #919191);
+      border: 1px solid #919191;
+      margin: 15px;
+      position: relative;
+      border-radius: 5px;
+      overflow: hidden; }
+      #lista_presentes > div img {
+        width: 100%;
+        height: auto;
+        margin-top: 10px; }
+        #lista_presentes > div > div {
+          padding: 20px;
+          padding-bottom: 60px;
+          text-align: center; }
+          #lista_presentes > div h3 {
+            font-size: 14px; }
+            #lista_presentes > div span {
+              font-family: Roboto;
+              font-size: 20px;
+              font-weight: 700;
+              display: block; }
+              #lista_presentes > div button {
+                background: #427757;
+                box-shadow: 0 2px #2f553e;
+                color: white;
+                cursor: pointer;
+                padding: 10px 20px;
+                font-size: 18px;
+                display: inline-block;
+                border-radius: 10px;
+                transition: 0.2s all;
+                margin-top: 20px; }
+                #lista_presentes > div button:hover {
+                  background: #55976f;
+                  transform: translateY(-2px);
+                  box-shadow: 0 4px #2f553e; }
+                  #lista_presentes > div button.adicionado {
+                    background-color: #ccc;
+                    box-shadow: 0 -4px #969696, inset 0 0 10px 2px #969696;
+                    color: #000; }
+                    #lista_presentes > div button.adicionado:hover {
+                      transform: none; }
 
 #convite {
   text-align: center;

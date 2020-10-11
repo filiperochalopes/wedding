@@ -8,15 +8,20 @@
     <h1>Presentes</h1>
     <p>Olá! Muito obrigado por querer ajudar, somos muito gratos por qualquer tipo de ajuda, temos de coisas pequenas à
         grandes! Não esqueça de nos mandar uma mensagem após dar o presente. Esperamos você em nosso casamento!</p>
-    Carrinho de presentes <button>Enviar presente</button>
+    <div id="carrinho">Carrinho de presentes [<span id="itens_carrinho">0</span> itens] <span id="preco_carrinho"></span> <button>Enviar presente</button></div>
     <div id="lista_presentes">
         {% for presente in presentes %}
         <div>
             <img src="/static/img/presentes/{{presente.imagem}}" />
             <div>
                 <h3>{{presente.nome}}</h3>
-                <span>R$ {{presente.preco}}</span>
-                <button class="presentear-bt" data-price="{{presente.preco}}" data-title="{{presente.nome}}"">Presentear</button>
+                <span>R$ {{"{:.2f}".format(presente.preco)}}</span>
+                <button 
+                class="presentear-bt" 
+                data-presente-id="{{presente.id}}"
+                data-price="{{'{:.2f}'.format(presente.preco)}}" 
+                data-title="{{presente.nome}}"
+                >Presentear</button>
             </div>
         </div>
         {% endfor %}

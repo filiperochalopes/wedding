@@ -1,3 +1,11 @@
+#carrinho {
+  position: sticky;
+  padding: 18px 40px;
+  margin: 0 auto;
+  background-color: #f1f1f1;
+  z-index: 5;
+}
+
 #lista_presentes {
   display: flex;
   flex-direction: row;
@@ -6,10 +14,10 @@
 
   > div {
     flex: 1 0 auto;
-    width: 180px;
+    width: 250px;
     background-image: linear-gradient(white 190px, #919191);
     border: 1px solid #919191;
-    margin: 5px;
+    margin: 15px;
     position: relative;
     border-radius: 5px;
     overflow: hidden;
@@ -22,12 +30,19 @@
 
     > div {
       padding: 20px;
+      padding-bottom: 60px;
       text-align: center;
     }
 
     h3 {
-      font-family: Roboto;
       font-size: 14px;
+    }
+
+    span {
+      font-family: Roboto;
+      font-size: 20px;
+      font-weight: 700;
+      display: block;
     }
 
     button {
@@ -39,13 +54,23 @@
       font-size: 18px;
       display: inline-block;
       border-radius: 10px;
-      transition: .2s all;
+      transition: 0.2s all;
       margin-top: 20px;
 
       &:hover {
         background: $second_green;
         transform: translateY(-2px);
         box-shadow: 0 4px $extra_dark_green;
+      }
+
+      &.adicionado {
+        background-color: #ccc;
+        box-shadow: 0 -4px #969696, inset 0 0 10px 2px #969696;
+        color: #000;
+
+        &:hover {
+          transform: none;
+        }
       }
     }
   }
