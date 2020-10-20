@@ -5,34 +5,74 @@
     <br><br>
     <br><br>
     <br><br>
-    <table id="convidados" class="display" style="width:100%">
+    <h1>{{estatisticas.total_convidados}} convidados <button id="mais_informacoes_convidados">Mais informações</button>
+    </h1>
+    <div id="div_mais_informacoes_convidados">
+        <p>Média de convidados por convite: {{estatisticas.media_convidados_por_convite}}</p>
+        {% for nome, numero in estatisticas.categorias.items() %}
+        <p>{{nome}}: {{numero}}</p>
+        {% endfor %}
+        {% for nome, dados in estatisticas.noivos.items() %}
+        <div>
+            <h2>{{nome}}</h2>
+            <div id="noivo_1_chart"></div>
+            {% for nome, numero in dados.items() %}
+            <p>{{nome}}: {{numero}}</p>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+    <table id="convidados">
         <thead>
             <tr>
                 <th>Nome</th>
                 <th>N</th>
                 <th>Noivo</th>
+                <th>Categoria</th>
+                <th colspan="2">Ações</th>
             </tr>
         </thead>
         <tbody>
             {% for convidado in convidados %}
-        <tr>
-            <td>{{convidado.nome}}</td>
-            <td>{{convidado.numero_convidados}}</td>
-            <td>{{convidado.noivo.nome}}</td>
-            <td>{{convidado.categoria.nome}}</td>
-            <td><button class="copiar_convite">Copiar</button></td>
-            <td><button class="teste_alerta">Alertar</button></td>
-        </tr>
-        {% endfor %}
-        </tbody>
-        <tfoot>
             <tr>
-                <th>Nome</th>
-                <th>N</th>
-                <th>Conjuge</th>
+                <td>{{convidado.nome}}</td>
+                <td>{{convidado.numero_convidados}}</td>
+                <td>{{convidado.noivo.nome}}</td>
+                <td>{{convidado.categoria.nome}}</td>
+                <td><button class="copiar_convite">Copiar</button></td>
+                <td><button class="teste_alerta">Alertar</button></td>
             </tr>
-        </tfoot>
+            {% endfor %}
+        </tbody>
     </table>
+
+    <script>
+        window.onload = function () {
+
+            var options = {
+                animationEnabled: true,
+                title: {
+                    text: "ACME Corporation Apparel Sales"
+                },
+                data: [{
+                    type: "doughnut",
+                    innerRadius: "40%",
+                    showInLegend: true,
+                    legendText: "{label}",
+                    indexLabel: "{label}: #percent%",
+                    dataPoints: [
+                        { label: "Department Stores", y: 6492917 },
+                        { label: "Discount Stores", y: 7380554 },
+                        { label: "Stores for Men / Women", y: 1610846 },
+                        { label: "Teenage Specialty Stores", y: 950875 },
+                        { label: "All other outlets", y: 900000 }
+                    ]
+                }]
+            };
+            $("#chartContainer").CanvasJSChart(options);
+
+        }
+    </script>
 
 </section>
 {% endblock %}

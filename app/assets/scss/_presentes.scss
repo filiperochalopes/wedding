@@ -1,33 +1,109 @@
-#lista_presentes{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
+#carrinho {
+  position: sticky;
+  top: 0;
+  padding: 18px 40px;
+  margin: 0 auto;
+  background-color: #f1f1f1;
+  z-index: 5;
+}
 
-    > div{
-        flex: 1 0 auto;
-        width: 180px;
-        background: #ebebeb;
-        border: 1px solid #5a5a5a;
-        padding: 25px;
-        margin: 5px;
+#lista_presentes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 
-        img{
-            width: 100px;
-        }
+  > div {
+    flex: 1 0 auto;
+    width: 250px;
+    background-image: linear-gradient(white 190px, #919191);
+    border: 1px solid #919191;
+    margin: 15px;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
 
-        button{
-            background: $dark_green;
-            color: white;
-            cursor: pointer;
-            padding: 10px 20px;
-            font-size: 18px;
-            display: block;
-            border-radius: 15px;
-            
-            &:hover{
-                background: $green;
-            }
-        }
+    img {
+      width: 100%;
+      height: auto;
+      margin-top: 10px;
     }
+
+    > div {
+      padding: 20px;
+      padding-bottom: 60px;
+      text-align: center;
+    }
+
+    h3 {
+      font-size: 14px;
+    }
+
+    span {
+      font-family: Roboto;
+      font-size: 20px;
+      font-weight: 700;
+      display: block;
+    }
+
+    button {
+      background: $dark_green;
+      box-shadow: 0 2px $extra_dark_green;
+      color: white;
+      cursor: pointer;
+      padding: 10px 20px;
+      font-size: 18px;
+      display: inline-block;
+      border-radius: 10px;
+      transition: 0.2s all;
+      margin-top: 20px;
+
+      &:hover {
+        background: $second_green;
+        transform: translateY(-2px);
+        box-shadow: 0 4px $extra_dark_green;
+      }
+
+      &.adicionado {
+        background-color: #ccc;
+        box-shadow: 0 -4px #969696, inset 0 0 10px 2px #969696;
+        color: #000;
+
+        &:hover {
+          transform: none;
+        }
+      }
+    }
+  }
+}
+
+.modal_wrap{
+  position: fixed;
+  top:0;
+  left: 0;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  background-color: rgba(47, 85, 62, 0.6);
+  z-index: 99;
+
+  .cover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  > section {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 500px;
+    padding: 20px;
+    background-color: white;
+  }
 }

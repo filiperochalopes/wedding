@@ -1,3 +1,14 @@
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(0.63);
+  }
+  80%,
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
 #banner {
   > .container {
     position: relative;
@@ -7,13 +18,14 @@
     margin: 0 auto;
     box-sizing: border-box;
 
-    img {
+    > img {
       width: 1031px;
       height: auto;
       border-radius: 50%;
       border: 50px solid $green;
       box-sizing: border-box;
       transform: translateX(-188px);
+      z-index: -2;
     }
 
     .yellow_circle {
@@ -24,36 +36,55 @@
       height: 360px;
       border-radius: 50%;
       background: $yellow;
-      padding: 80px 40px;
+      padding: 50px 60px;
       box-sizing: border-box;
       text-align: center;
 
-      h2 {
-        font-weight: normal;
-        font-size: 38px;
-        line-height: 18px;
-        display: inline-block;
-        letter-spacing: 2px;
-        margin: 0;
-        margin-bottom: 20px;
+      span {
+        font-family: Charmonman;
+        font-size: 25px;
+        display: block;
       }
 
-      button {
-        margin: 0 auto;
-        font-size: 40px;
-        padding: 20px;
-        font-weight: normal;
-        text-align: center;
-        line-height: 18px;
-        white-space: nowrap;
-        font-family: Charmonman;
-        letter-spacing: -2.5px;
-        color: #000000;
+      h2 {
+        text-align: right;
+        display: inline-block;
+        font-family: Roboto;
+        font-size: 60px;
+        line-height: 65px;
+        font-weight: 700;
+        display: inline-block;
+        letter-spacing: -1px;
+        margin: 0 20px 0 0;
 
-        background: #92e3b2;
-        border: 2px solid $dark_green;
-        box-sizing: border-box;
-        box-shadow: 0px 4px 0px $dark_green;
+        span {
+          font-family: Roboto;
+          font-size: 60px;
+          line-height: 65px;
+          display: block;
+        }
+      }
+
+      > div {
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        background-color: white;
+        position: absolute;
+        top:-20px;
+        left:-20px;
+        z-index: 2;
+        animation: pulse 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+      }
+
+      img {
+        position: absolute;
+    top: -47px;
+    width: 700px;
+    z-index: 2;
+    left: -267px;
+    border: none;
+    border-radius: 0px;
       }
     }
   }

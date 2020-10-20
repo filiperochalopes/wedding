@@ -8,15 +8,34 @@
     <h1>Presentes</h1>
     <p>Olá! Muito obrigado por querer ajudar, somos muito gratos por qualquer tipo de ajuda, temos de coisas pequenas à
         grandes! Não esqueça de nos mandar uma mensagem após dar o presente. Esperamos você em nosso casamento!</p>
+    <div id="carrinho">Carrinho de presentes [<span id="itens_carrinho">0</span> itens] <span
+            id="preco_carrinho"></span> <button id="checkout">Enviar presente</button></div>
     <div id="lista_presentes">
         {% for presente in presentes %}
         <div>
-            <h3>{{presente.nome}}</h3>
             <img src="/static/img/presentes/{{presente.imagem}}" />
-            <span>R$ {{presente.preco}}</span>
-            <button class="presentear-bt" data-price="{{presente.preco}}" data-title="{{presente.nome}}"">Presentear</button>
+            <div>
+                <h3>{{presente.nome}}</h3>
+                <span>R$ {{"{:.2f}".format(presente.preco)}}</span>
+                <button class="presentear-bt" id="presentear-bt-{{presente.id}}" data-presente-id="{{presente.id}}"
+                    data-price="{{'{:.2f}'.format(presente.preco)}}" data-title="{{presente.nome}}">Presentear</button>
+            </div>
         </div>
         {% endfor %}
     </div>
 </section>
+<div class="modal_wrap" id="modal_presente">
+    <div class="cover close_modal_presente"></div>
+    <section>
+        <header>Finalizar envio do presente</header>
+        Identifique-se e envie uma mensagem se quiser, ficaremos agradecidos! :)
+        <div>
+            <form>
+                <input type="text" placeholder="nome" name="nome" />
+                <textarea name="mensagem"></textarea>
+            </form>
+            <button type="button" id="pagar">Prosseguir</button>
+        </div>
+    </section>
+</div>
 {% endblock %}
