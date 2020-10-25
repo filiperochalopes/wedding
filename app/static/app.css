@@ -278,7 +278,8 @@ footer {
     font-size: 18px; }
 
 #mais_informacoes_convidados_div {
-  display: none; }
+  display: none;
+  margin-bottom: 50px; }
 
   html, body, ul {
     padding: 0;
@@ -286,7 +287,8 @@ footer {
 
     button {
       outline: none;
-      border: none; }
+      border: none;
+      cursor: pointer; }
 
       body {
         font-family: "Roboto", sans-serif; }
