@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  console.log("Documento carregado.");
+  console.log($("#convidados"));
   $("#convidados").DataTable();
 
   $(".teste_alerta").on("click", function (e) {
@@ -82,21 +84,21 @@ $(document).ready(function () {
     );
   });
 
-  $("#enviar_mensagem").click(function(){
-    $("#modal_mensagem").css("display", "block")
-  })
+  $("#enviar_mensagem").click(function () {
+    $("#modal_mensagem").css("display", "block");
+  });
 
-  $(".close_modal_mensagem").click(function(){
-    $("#modal_mensagem").css("display", "none")
-  })
+  $(".close_modal_mensagem").click(function () {
+    $("#modal_mensagem").css("display", "none");
+  });
 
-  $("#checkout").click(function(){
-    $("#modal_presente").show()
-  })
+  $("#checkout").click(function () {
+    $("#modal_presente").show();
+  });
 
-  $(".close_modal_presente").click(function(){
-    $("#modal_presente").hide()
-  })
+  $(".close_modal_presente").click(function () {
+    $("#modal_presente").hide();
+  });
 
   function pagar() {
     // inicia a instância do checkout

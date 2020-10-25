@@ -22,14 +22,14 @@
         </div>
         {% endfor %}
     </div>
-    <table id="convidados">
+    <table id="convidados" class="display">
         <thead>
             <tr>
                 <th>Nome</th>
                 <th>N</th>
                 <th>Noivo</th>
                 <th>Categoria</th>
-                <th colspan="2">Ações</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -39,8 +39,10 @@
                 <td>{{convidado.numero_convidados}}</td>
                 <td>{{convidado.noivo.nome}}</td>
                 <td>{{convidado.categoria.nome}}</td>
-                <td><button class="copiar_convite">Copiar</button></td>
-                <td><button class="teste_alerta">Alertar</button></td>
+                <td class="acoes">
+                    <div><button class="copiar_convite">Copiar</button></div>
+                    <div><button class="teste_alerta">Alertar</button></div>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
