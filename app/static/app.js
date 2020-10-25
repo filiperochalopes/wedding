@@ -1,7 +1,9 @@
 $(document).ready(function () {
   console.log("Documento carregado.");
   console.log($("#convidados"));
-  $("#convidados").DataTable();
+  $("#convidados").DataTable({
+    pageLength: 50,
+  });
 
   $(".teste_alerta").on("click", function (e) {
     console.log(e);
@@ -14,6 +16,14 @@ $(document).ready(function () {
       $("nav").css("display", "block");
     } else {
       $("nav").css("display", "none");
+    }
+  });
+
+  $("#mais_informacoes_convidados_bt").click(function () {
+    if ($("#mais_informacoes_convidados_div").css("display") === "none") {
+      $("#mais_informacoes_convidados_div").css("display", "block");
+    } else {
+      $("#mais_informacoes_convidados_div").css("display", "none");
     }
   });
 
@@ -130,4 +140,8 @@ $(document).ready(function () {
       ],
     });
   }
+
+  /* -------------------------
+  --------- GRÁFICOS ---------
+  ---------------------------- */
 });

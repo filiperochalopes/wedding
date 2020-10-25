@@ -5,6 +5,7 @@
 @import "nosso_amor";
 @import "presentes";
 @import "convite";
+@import "convidados";
 
 html,
 body,
@@ -16,6 +17,7 @@ ul {
 button {
   outline: none;
   border: none;
+  cursor: pointer;
 }
 
 body {
@@ -248,5 +250,19 @@ body {
       color: #7c2a2e;
       text-shadow: 0px 4px 4px #ecef49;
     }
+  }
+}
+
+.charts{
+  display: flex;
+}
+
+.chart{
+  position: relative;
+  width: 450px;
+  height: 400px;
+
+  canvas{
+    width: 100% !important;
   }
 }

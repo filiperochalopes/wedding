@@ -44,7 +44,9 @@ def convidados():
     noivos = db.session.query(Noivo).all()
     for noivo in noivos:
         convidados_noivo = db.session.query(Convidado).filter(Convidado.nome is not None, Convidado.fk_noivo == noivo.id).all()
-        estatisticas['noivos'][noivo.nome] = estatistica_por_categorias(convidados_noivo)
+        estatisticas['noivos'][noivo.nome] = {}
+        estatisticas['noivos'][noivo.nome]['id'] = noivo.id
+        estatisticas['noivos'][noivo.nome]['categorias'] = estatistica_por_categorias(convidados_noivo)
         estatisticas['noivos'][noivo.nome]['total'] = contar_convidados(convidados_noivo)
 
     pprint(estatisticas)

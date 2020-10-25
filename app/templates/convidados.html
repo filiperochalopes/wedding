@@ -1,80 +1,110 @@
-{% extends 'base.html' %}
-{% block title %}- Convidados{% endblock %}
-{% block content %}
+{% extends 'base.html' %} {% block title %}- Convidados{% endblock %} {% block
+content %}
 <section>
-    <br><br>
-    <br><br>
-    <br><br>
-    <h1>{{estatisticas.total_convidados}} convidados <button id="mais_informacoes_convidados">Mais informações</button>
-    </h1>
-    <div id="div_mais_informacoes_convidados">
-        <p>Média de convidados por convite: {{estatisticas.media_convidados_por_convite}}</p>
-        {% for nome, numero in estatisticas.categorias.items() %}
-        <p>{{nome}}: {{numero}}</p>
-        {% endfor %}
-        {% for nome, dados in estatisticas.noivos.items() %}
-        <div>
-            <h2>{{nome}}</h2>
-            <div id="noivo_1_chart"></div>
-            {% for nome, numero in dados.items() %}
-            <p>{{nome}}: {{numero}}</p>
-            {% endfor %}
-        </div>
-        {% endfor %}
+  <br /><br />
+  <br /><br />
+  <br /><br />
+  <h1>
+    {{estatisticas.total_convidados}} convidados
+    <button id="mais_informacoes_convidados_bt">Mais informações</button>
+  </h1>
+  <div id="mais_informacoes_convidados_div">
+    <p>
+      Média de convidados por convite:
+      {{estatisticas.media_convidados_por_convite}}
+    </p>
+    <div class="charts">
+      <div id="chart_noivos_geral" class="chart"></div>
+      <div id="chart_categorias_geral" class="chart"></div>
     </div>
-    <table id="convidados" class="display">
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>N</th>
-                <th>Noivo</th>
-                <th>Categoria</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for convidado in convidados %}
-            <tr>
-                <td>{{convidado.nome}}</td>
-                <td>{{convidado.numero_convidados}}</td>
-                <td>{{convidado.noivo.nome}}</td>
-                <td>{{convidado.categoria.nome}}</td>
-                <td class="acoes">
-                    <div><button class="copiar_convite">Copiar</button></div>
-                    <div><button class="teste_alerta">Alertar</button></div>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-
-    <script>
-        window.onload = function () {
-
-            var options = {
-                animationEnabled: true,
-                title: {
-                    text: "ACME Corporation Apparel Sales"
-                },
-                data: [{
-                    type: "doughnut",
-                    innerRadius: "40%",
-                    showInLegend: true,
-                    legendText: "{label}",
-                    indexLabel: "{label}: #percent%",
-                    dataPoints: [
-                        { label: "Department Stores", y: 6492917 },
-                        { label: "Discount Stores", y: 7380554 },
-                        { label: "Stores for Men / Women", y: 1610846 },
-                        { label: "Teenage Specialty Stores", y: 950875 },
-                        { label: "All other outlets", y: 900000 }
-                    ]
-                }]
-            };
-            $("#chartContainer").CanvasJSChart(options);
-
+    <div class="charts">
+      {% for nome, dados in estatisticas.noivos.items() %}
+      <div>
+        <h2>{{nome}}</h2>
+        <div id="noivo_{{dados.id}}_chart" class="chart"></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <table id="convidados" class="display">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>N</th>
+        <th>Noivo</th>
+        <th>Categoria</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for convidado in convidados %}
+      <tr>
+        <td>{{convidado.nome}}</td>
+        <td>{{convidado.numero_convidados}}</td>
+        <td>{{convidado.noivo.nome}}</td>
+        <td>{{convidado.categoria.nome}}</td>
+        <td class="acoes">
+          <div><button class="copiar_convite">Copiar</button></div>
+          <div><button class="teste_alerta">Alertar</button></div>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <script>
+    window.onload = function () {
+        var generalOptions = {
+            type: "doughnut",
+            startAngle: 60,
+            innerRadius: 90,
+            indexLabelFontSize: 12,
+            indexLabel: "{label} - #percent%",
+            toolTipContent: "<b>{label}:</b> {y} (#percent%)",
         }
-    </script>
 
+        var noivosGeralChart = new CanvasJS.Chart("chart_noivos_geral", {
+            data: [{
+                ...generalOptions,
+                showInLegend: true,
+                    dataPoints: [
+                    {% for nome, dados in estatisticas.noivos.items() %}
+                        { y: parseInt('{{dados.total}}'), label: "{{nome}}", name: "{{nome}}" },
+                    {% endfor %}
+                    ],
+                }],
+        });
+
+        var categoriaGeralChart = new CanvasJS.Chart("chart_categorias_geral", {
+            data: [{
+                    ...generalOptions,
+                    dataPoints: [
+                    {% for nome, numero in estatisticas.categorias.items() %}
+                        { y: parseInt('{{numero}}'), label: "{{nome}}" },
+                    {% endfor %}
+                    ],
+                }],
+        });
+
+        var noivoCharts = []
+        {% for nome, dados in estatisticas.noivos.items() %}
+        noivoCharts.push(new CanvasJS.Chart("noivo_{{dados.id}}_chart", {
+            data: [{
+                    ...generalOptions,
+                    dataPoints: [
+                    {% for nome, numero in dados.categorias.items() %}
+                        { y: parseInt('{{numero}}'), label: "{{nome}}" },
+                    {% endfor %}
+                    ],
+                }],
+        }))
+        {% endfor %}
+
+    categoriaGeralChart.render();
+    noivosGeralChart.render();
+    noivoCharts.forEach(function(noivoChart){
+        noivoChart.render()
+    })
+    }
+  </script>
 </section>
 {% endblock %}
