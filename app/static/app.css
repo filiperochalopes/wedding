@@ -8,28 +8,40 @@ body > header {
   padding: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   z-index: 2; }
-  body > header button {
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    cursor: pointer;
-    display: none;
-    z-index: 10; }
-    @media (max-width: 768px) {
-      body > header button {
-        display: block;   }
+  @media (max-width: 768px) {
+    body > header {
+      overflow: unset;   }
+}
+    body > header button {
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      cursor: pointer;
+      display: none;
+      z-index: 10; }
+      @media (max-width: 768px) {
+        body > header button {
+          display: block;   }
 }
   body > header nav {
     text-align: center; }
     @media (max-width: 768px) {
       body > header nav {
-        display: none;   }
+        display: none;
+        top: 50px;
+        left: -30px;
+        position: absolute;
+        width: 100%;   }
+        body > header nav ul li {
+          display: block;
+          background-color: #f1f1f1;
+          line-height: 60px;   }
 }
-      @media (min-width: 769px) {
-        body > header nav {
-          display: block !important;   }
+    @media (min-width: 769px) {
+      body > header nav {
+        display: block !important;   }
 }
   body > header ul {
     list-style: none; }
@@ -106,62 +118,89 @@ footer {
   padding: 0 16px;
   margin: 0 auto;
   box-sizing: border-box; }
-  #banner > .container > img {
-    width: 1031px;
-    height: auto;
-    border-radius: 50%;
-    border: 50px solid #92e3b2;
-    box-sizing: border-box;
-    transform: translateX(-188px);
-    z-index: -2; }
-    #banner > .container .yellow_circle {
-      position: absolute;
-      top: 550px;
-      right: 0px;
-      width: 360px;
-      height: 360px;
+  @media (max-width: 768px) {
+    #banner > .container {
+      margin-bottom: 50px;   }
+}
+    #banner > .container > img {
+      max-width: 1031px;
+      width: calc(100% + 188px);
+      height: auto;
       border-radius: 50%;
-      background: #ecef49;
-      padding: 50px 60px;
+      border: 50px solid #92e3b2;
       box-sizing: border-box;
-      text-align: center; }
-      #banner > .container .yellow_circle span {
-        font-family: Charmonman;
-        font-size: 25px;
-        display: block; }
-        #banner > .container .yellow_circle h2 {
-          text-align: right;
-          display: inline-block;
-          font-family: Roboto;
-          font-size: 60px;
-          line-height: 65px;
-          font-weight: 700;
-          display: inline-block;
-          letter-spacing: -1px;
-          margin: 0 20px 0 0; }
-          #banner > .container .yellow_circle h2 span {
-            font-family: Roboto;
-            font-size: 60px;
-            line-height: 65px;
-            display: block; }
-      #banner > .container .yellow_circle > div {
-        width: 400px;
-        height: 400px;
-        border-radius: 50%;
-        background-color: white;
+      transform: translateX(-188px);
+      z-index: -2; }
+      #banner > .container .yellow_circle {
         position: absolute;
-        top: -20px;
-        left: -20px;
-        z-index: 2;
-        animation: pulse 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
-        #banner > .container .yellow_circle img {
+        top: 550px;
+        right: 0px;
+        width: 360px;
+        height: 360px;
+        border-radius: 50%;
+        background: #ecef49;
+        padding: 50px 60px;
+        box-sizing: border-box;
+        text-align: center; }
+        @media (max-width: 768px) {
+          #banner > .container .yellow_circle {
+            top: auto;
+            bottom: -10%;
+            width: 300px;
+            height: 300px;   }
+}
+          #banner > .container .yellow_circle span {
+            font-family: Charmonman;
+            font-size: 25px;
+            display: block; }
+            #banner > .container .yellow_circle h2 {
+              text-align: right;
+              display: inline-block;
+              font-family: Roboto;
+              font-size: 60px;
+              line-height: 65px;
+              font-weight: 700;
+              display: inline-block;
+              letter-spacing: -1px;
+              margin: 0 20px 0 0; }
+              @media (max-width: 768px) {
+                #banner > .container .yellow_circle h2 {
+                  font-size: 50px;
+                  line-height: 52px;   }
+}
+                #banner > .container .yellow_circle h2 span {
+                  font-family: Roboto;
+                  font-size: 60px;
+                  line-height: 65px;
+                  display: block; }
+                  @media (max-width: 768px) {
+                    #banner > .container .yellow_circle h2 span {
+                      font-size: 50px;
+                      line-height: 52px;   }
+}
+        #banner > .container .yellow_circle > div {
+          width: 400px;
+          height: 400px;
+          border-radius: 50%;
+          background-color: white;
           position: absolute;
-          top: -47px;
-          width: 700px;
+          top: -20px;
+          left: -20px;
           z-index: 2;
-          left: -267px;
-          border: none;
-          border-radius: 0px; }
+          animation: pulse 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite; }
+          #banner > .container .yellow_circle img {
+            position: absolute;
+            top: -47px;
+            width: 700px;
+            z-index: 2;
+            left: -267px;
+            border: none;
+            border-radius: 0px; }
+            @media (max-width: 768px) {
+              #banner > .container .yellow_circle img {
+                width: 618px;
+                left: -250px;   }
+}
 
 #nosso-amor header h1 {
   font-family: Charmonman;
@@ -281,19 +320,22 @@ footer {
   display: none;
   margin-bottom: 50px; }
 
-  html, body, ul {
-    padding: 0;
-    margin: 0; }
+  html {
+    overflow-x: hidden; }
 
-    button {
-      outline: none;
-      border: none;
-      cursor: pointer; }
+    html, body, ul {
+      padding: 0;
+      margin: 0; }
 
-      body {
-        font-family: "Roboto", sans-serif; }
-        body h1, body h2, body h3 {
-          font-family: "Charmonman", cursive; }
+      button {
+        outline: none;
+        border: none;
+        cursor: pointer; }
+
+        body {
+          font-family: "Roboto", sans-serif; }
+          body h1, body h2, body h3 {
+            font-family: "Charmonman", cursive; }
 
 .container {
   position: relative;
@@ -343,7 +385,8 @@ footer {
   color: #0c0c0c; }
 
 #gift {
-  display: flex; }
+  display: flex;
+  flex-wrap: wrap; }
   #gift img {
     width: 322px;
     height: 246px;

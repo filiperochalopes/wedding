@@ -7,6 +7,10 @@
 @import "convite";
 @import "convidados";
 
+html{
+  overflow-x: hidden;
+}
+
 html,
 body,
 ul {
@@ -98,6 +102,7 @@ body {
 
 #gift {
   display: flex;
+  flex-wrap: wrap;
 
   img {
     width: 322px;
@@ -173,6 +178,7 @@ body {
     margin: 20px 42px;
   }
 }
+
 #nossas-aventuras {
   > div {
     h3 {
