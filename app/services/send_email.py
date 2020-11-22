@@ -28,12 +28,12 @@ def send_email_func(
     html = f"""\
     <html>
     <body style="width:100vw">
-        <div style="display: inline-block; width: 600px; margin: 0 auto">
-            <div style="width: 600px; height: 80px; background-color: #000; overflow: hidden; text-align: center">
-                <img src="https://filipeelore.love/static/img/white-email-logo.png" height="50px" style="margin-top:15px" />
+        <div style="display: block; position: relative; width: 600px; margin: 0 auto">
+            <div style="width: 600px; height: 140px; background-color: #000; overflow: hidden; text-align: center">
+                <img src="https://filipeelore.love/static/img/white-email-logo.png" height="50px" style="margin-top:35px" />
             </div>
             <div style="position: relative">
-                <div style="height: 120%; transform: translateY(-30px); padding: 20px 20px 40px 20px; background-color: #FAFAFA; width: 494px; margin: 0 auto; border-radius:8px; box-sizing: border-box; word-break: break-all">
+                <div style="height: auto; transform: translateY(-20px); padding: 20px 20px 40px 20px; background-color: #FAFAFA; width: 494px; margin: 0 auto; box-sizing: border-box; word-break: break-all; box-shadow: 1px 1px 20px rgba(0,0,0,0.1)">
                     {text_message}
                 </div>
             </div>
@@ -74,25 +74,25 @@ def send_email():
     
     # Mensagem para o casal
     send_email_func('Contato - Filipe & Lore', 'contato@filipeelore.love', f'''
-    Segue mensagem escrita:  \n\n
-    {message}\n\n
+    <p>Segue mensagem escrita:</p>
+    <p>{message}</p>
 
-    Por {name} - {email}\n
-    ''', subject=subject)
+    <p>Por {name} - {email}</p>
+    ''', subject=f"Mensagem de {name}")
     
     # Mensagem de retorno
-    send_email_func('Filipe Lopes', 'contato@orango.io', f'''
-    Olá {name}, \n\n
+    send_email_func(name, email, f'''
+    <p>Olá {name},</p>
 
-    Somos gratos pelo carinho e por fazer parte desse mmomento, desejamos também para você tudo de bom e que o SENHOR multiplique as bençãos sobre a sua vida. \n\n
+    <p>Somos gratos pelo carinho e por fazer parte desse mmomento, desejamos também para você tudo de bom e que o SENHOR multiplique as bençãos sobre a sua vida.</p>
 
-    "Porque dele, e por meio dele, e para ele são todas as coisas. A ele, pois, a glória eternamente. Amém!" Rm 11:36 \n\n
+    <p>"Porque dele, e por meio dele, e para ele são todas as coisas. A ele, pois, a glória eternamente. Amém!" Rm 11:36</p>
 
-    Essa é uma mensagem automática, \n\n
+    <p>Essa é uma mensagem automática,</p>
 
-    Gratidão, \n\n
+    <p>Gratidão,</p>
 
-    Filipe e Lore. \n
+    <p>Filipe e Lore.</p>
     ''', subject="Filipe & Lore - Obrigado")
     print("enviando mensagem")
 
