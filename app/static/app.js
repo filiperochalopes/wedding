@@ -111,6 +111,8 @@ $(document).ready(function () {
     $("#modal_presente").hide();
   });
 
+  $("[data-paroller-factor]").paroller();
+
   function pagar() {
     // inicia a instância do checkout
     var checkout = new PagarMeCheckout.Checkout({

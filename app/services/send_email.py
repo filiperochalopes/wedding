@@ -16,7 +16,7 @@ def send_email_func(
     subject: str = "Sem assunto"
 ):
 
-    from_name = from_name or "ORANGO I/O TELEATENDIMENTO"
+    from_name = from_name or "CASAMENTO DE FILIPE & LORENA"
     from_email = from_email or "naoresponda@filipeelore.love"
     message = MIMEMultipart("alternative")
     message["Subject"] = subject
@@ -63,7 +63,6 @@ def send_email_func(
         with smtplib.SMTP_SSL("mail.filipeelore.love", port, context=context) as server:
             server.login(from_email, password)
             server.sendmail(from_email, to_email, message.as_string())
-        print("Mensagem enviada")
     except Exception as e:
         print(e)
         raise e
