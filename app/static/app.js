@@ -104,6 +104,7 @@ $(document).ready(function () {
 
   $("#checkout").click(function () {
     $("#modal_presente").show();
+    pagar_teste()
   });
 
   $(".close_modal_presente").click(function () {
@@ -135,6 +136,38 @@ $(document).ready(function () {
           title: `Valor de ${$(this).data("title")}`,
           unit_price: $(this).data("price"),
           quantity: 1,
+          tangible: "false",
+        },
+      ],
+    });
+  }
+
+  function pagar_teste() {
+    // inicia a instância do checkout
+    var checkout = new PagarMeCheckout.Checkout({
+      encryption_key: "ek_test_qedtchn5pAnzVpEqetVwP86Cw4FgBc",
+      success: function (data) {
+        console.log(data);
+      },
+      error: function (err) {
+        console.log(err);
+      },
+      close: function () {
+        console.log("The modal has been closed.");
+      },
+    });
+    console.log(parseFloat($(this).data("price")).toString());
+
+    checkout.open({
+      amount: "12000",
+      customerData: "true",
+      createToken: "true",
+      items: [
+        {
+          id: "PRESENTE_01",
+          title: `Valor de Presente`,
+          unit_price: "6000",
+          quantity: 2,
           tangible: "false",
         },
       ],

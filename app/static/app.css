@@ -320,6 +320,17 @@ footer {
   display: none;
   margin-bottom: 50px; }
 
+  #cortina {
+    display: none; }
+
+    .modal {
+      display: none; }
+      .modal header h1 {
+        font-size: 20px; }
+
+input {
+  width: 100%; }
+
   html {
     overflow-x: hidden; }
 
