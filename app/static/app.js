@@ -94,8 +94,19 @@ $(document).ready(function () {
     );
   });
 
+  /** MODAIS */
+  $("#appendix").on("click", ".close", function () {
+    $("#cortina").hide();
+    $(".modal").hide();
+  });
+
+  function open_modal(id) {
+    $("#cortina").show();
+    $(`#${id}`).show();
+  }
+
   $("#enviar_mensagem").click(function () {
-    $("#modal_mensagem").css("display", "block");
+    open_modal("envio_mensagens");
   });
 
   $(".close_modal_mensagem").click(function () {
@@ -104,14 +115,45 @@ $(document).ready(function () {
 
   $("#checkout").click(function () {
     $("#modal_presente").show();
-    pagar_teste()
+    pagar_teste();
   });
 
   $(".close_modal_presente").click(function () {
     $("#modal_presente").hide();
   });
 
+  // Acionando todos os parallax scrollers
   $("[data-paroller-factor]").paroller();
+
+  /** FORMS */
+  $("#envio_mensagens").on("click", "button", function (e) {
+    e.preventDefault();
+    var form = $("#envio_mensagens_form");
+    console.log(form.serialize());
+    $.ajax({
+      type: form.attr("method"),
+      url: form.attr("action"),
+      dataType: 'html',
+      data: form.serialize(),
+      beforeSend: function () {
+        // $('#insere_aqui').html(iconCarregando);
+        console.log("carregando...");
+      },
+      complete: function () {
+        $(iconCarregando).remove();
+      },
+      success: function (data, textStatus) {
+        console.log("ok");
+        console.log(data);
+        console.log(textStatus);
+      },
+      error: function (xhr, er) {
+        console.log(
+          `Error ${xhr.status} - ${xhr.statusText} \n Tipo de erro: ${er}`
+        );
+      },
+    });
+  });
 
   function pagar() {
     // inicia a instância do checkout

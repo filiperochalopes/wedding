@@ -321,120 +321,183 @@ footer {
   margin-bottom: 50px; }
 
   #cortina {
-    display: none; }
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(2px);
+    z-index: 10; }
 
     .modal {
-      display: none; }
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+      position: fixed;
+      min-width: 300px;
+      max-width: 50vw;
+      z-index: 11;
+      background-color: white;
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      box-sizing: border-box;
+      border-radius: 3px; }
       .modal header h1 {
         font-size: 20px; }
+      .modal button.close {
+        position: absolute;
+        top: 10px;
+        right: 10px; }
 
 input {
-  width: 100%; }
+  max-width: 100%;
+  min-width: 300px;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  border-radius: 5px;
+  outline: none;
+  display: block;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font-family: Roboto; }
+  input:focus {
+    border: 1px solid #55976f; }
 
-  #welcome #logo {
-    width: 100%;
-    height: 150px;
-    display: flex;
-    flex-direction: row; }
-    #welcome #logo > div {
-      position: relative;
-      flex: 1 1 auto; }
-      #welcome #logo > div .circle {
-        position: absolute;
-        border-radius: 50%;
-        min-width: 50px;
-        min-height: 50px;
-        z-index: 1; }
-        #welcome #logo > div .circle.yellow {
-          background: #ecef49; }
-          #welcome #logo > div .circle.green {
-            background: #92e3b2; }
-      #welcome #logo > div:nth-child(1) {
-        width: 40%; }
-        #welcome #logo > div:nth-child(1) .circle:nth-child(1) {
-          width: 100px;
-          height: 100px;
-          top: 7px;
-          right: 6px; }
-          #welcome #logo > div:nth-child(1) .circle:nth-child(2) {
-            width: 80px;
-            height: 80px;
-            top: 63px;
-            right: 100px; }
-            #welcome #logo > div:nth-child(1) .circle:nth-child(3) {
+textarea {
+  max-width: 100%;
+  min-width: 300px;
+  min-height: 200px;
+  resize: none;
+  margin: 0;
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  border-radius: 5px;
+  outline: none;
+  display: block;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  font-family: Roboto; }
+  textarea:focus {
+    border: 1px solid #55976f; }
+
+form button {
+  background: #92e3b2;
+  padding: 10px 12px;
+  border: 1px solid #55976f;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 18px;
+  border-radius: 5px; }
+
+#welcome #logo {
+  width: 100%;
+  height: 150px;
+  display: flex;
+  flex-direction: row; }
+  #welcome #logo > div {
+    position: relative;
+    flex: 1 1 auto; }
+    #welcome #logo > div .circle {
+      position: absolute;
+      border-radius: 50%;
+      min-width: 50px;
+      min-height: 50px;
+      z-index: 1; }
+      #welcome #logo > div .circle.yellow {
+        background: #ecef49; }
+        #welcome #logo > div .circle.green {
+          background: #92e3b2; }
+    #welcome #logo > div:nth-child(1) {
+      width: 40%; }
+      #welcome #logo > div:nth-child(1) .circle:nth-child(1) {
+        width: 100px;
+        height: 100px;
+        top: 7px;
+        right: 6px; }
+        #welcome #logo > div:nth-child(1) .circle:nth-child(2) {
+          width: 80px;
+          height: 80px;
+          top: 63px;
+          right: 100px; }
+          #welcome #logo > div:nth-child(1) .circle:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            top: 27px;
+            right: 179px; }
+    #welcome #logo > div:nth-child(2) {
+      flex: 0 0 auto; }
+      #welcome #logo > div:nth-child(2) img {
+        position: relative;
+        width: 150px;
+        height: auto;
+        z-index: 3; }
+        #welcome #logo > div:nth-child(2) .circle:nth-of-type(1),
+        #welcome #logo > div:nth-child(2) .circle:nth-of-type(2) {
+          width: 92px;
+          height: 92px; }
+          #welcome #logo > div:nth-child(2) .circle:nth-of-type(1) {
+            top: 1px;
+            right: 1px; }
+            #welcome #logo > div:nth-child(2) .circle:nth-of-type(2) {
+              bottom: 1px;
+              left: 1px; }
+              #welcome #logo > div:nth-child(2) .circle:nth-of-type(3),
+              #welcome #logo > div:nth-child(2) .circle:nth-of-type(4) {
+                width: 56px;
+                height: 56px; }
+                #welcome #logo > div:nth-child(2) .circle:nth-of-type(3) {
+                  top: 1px;
+                  left: 1px; }
+                  #welcome #logo > div:nth-child(2) .circle:nth-of-type(4) {
+                    bottom: 1px;
+                    right: 1px; }
+    #welcome #logo > div:nth-child(3) {
+      width: 40%; }
+      #welcome #logo > div:nth-child(3) .circle:nth-child(1) {
+        width: 125px;
+        height: 125px;
+        top: 12px;
+        left: 10px; }
+        #welcome #logo > div:nth-child(3) .circle:nth-child(2) {
+          width: 80px;
+          height: 80px;
+          top: 63px;
+          left: 140px; }
+          #welcome #logo > div:nth-child(3) .circle:nth-child(3) {
+            width: 40px;
+            height: 40px;
+            top: 9px;
+            left: 130px; }
+            #welcome #logo > div:nth-child(3) .circle:nth-child(4) {
               width: 40px;
               height: 40px;
-              top: 27px;
-              right: 179px; }
-      #welcome #logo > div:nth-child(2) {
-        flex: 0 0 auto; }
-        #welcome #logo > div:nth-child(2) img {
-          position: relative;
-          width: 150px;
-          height: auto;
-          z-index: 3; }
-          #welcome #logo > div:nth-child(2) .circle:nth-of-type(1),
-          #welcome #logo > div:nth-child(2) .circle:nth-of-type(2) {
-            width: 92px;
-            height: 92px; }
-            #welcome #logo > div:nth-child(2) .circle:nth-of-type(1) {
-              top: 1px;
-              right: 1px; }
-              #welcome #logo > div:nth-child(2) .circle:nth-of-type(2) {
-                bottom: 1px;
-                left: 1px; }
-                #welcome #logo > div:nth-child(2) .circle:nth-of-type(3),
-                #welcome #logo > div:nth-child(2) .circle:nth-of-type(4) {
-                  width: 56px;
-                  height: 56px; }
-                  #welcome #logo > div:nth-child(2) .circle:nth-of-type(3) {
-                    top: 1px;
-                    left: 1px; }
-                    #welcome #logo > div:nth-child(2) .circle:nth-of-type(4) {
-                      bottom: 1px;
-                      right: 1px; }
-      #welcome #logo > div:nth-child(3) {
-        width: 40%; }
-        #welcome #logo > div:nth-child(3) .circle:nth-child(1) {
-          width: 125px;
-          height: 125px;
-          top: 12px;
-          left: 10px; }
-          #welcome #logo > div:nth-child(3) .circle:nth-child(2) {
-            width: 80px;
-            height: 80px;
-            top: 63px;
-            left: 140px; }
-            #welcome #logo > div:nth-child(3) .circle:nth-child(3) {
-              width: 40px;
-              height: 40px;
-              top: 9px;
-              left: 130px; }
-              #welcome #logo > div:nth-child(3) .circle:nth-child(4) {
-                width: 40px;
-                height: 40px;
-                top: 50px;
-                left: 230px; }
-  #welcome h3, #welcome h1 {
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    display: block; }
-    #welcome h3 {
-      font-size: 24px;
-      line-height: 30px;
-      margin: 20px 0; }
-      #welcome h1 {
-        font-size: 60px;
-        line-height: 65px; }
-        #welcome h1:first-of-type {
-          margin-left: -20%; }
-          #welcome h1:last-of-type {
-            margin-right: -20%; }
-  #welcome p {
-    padding: 0 30%;
-    text-align: center;
-    margin-top: 60px; }
+              top: 50px;
+              left: 230px; }
+#welcome h3, #welcome h1 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  display: block; }
+  #welcome h3 {
+    font-size: 24px;
+    line-height: 30px;
+    margin: 20px 0; }
+    #welcome h1 {
+      font-size: 60px;
+      line-height: 65px; }
+      #welcome h1:first-of-type {
+        margin-left: -20%; }
+        #welcome h1:last-of-type {
+          margin-right: -20%; }
+#welcome p {
+  padding: 0 30%;
+  text-align: center;
+  margin-top: 60px; }
 
 html {
   overflow-x: hidden; }

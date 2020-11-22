@@ -27,7 +27,7 @@ def send_email_func(
     text = text_message or "Sem mensagem"
     html = f"""\
     <html>
-    <body style="width:100vw">
+    <body style="width:100%">
         <div style="display: block; position: relative; width: 600px; margin: 0 auto">
             <div style="width: 600px; height: 140px; background-color: #000; overflow: hidden; text-align: center">
                 <img src="https://filipeelore.love/static/img/white-email-logo.png" height="50px" style="margin-top:35px" />
@@ -65,24 +65,24 @@ def send_email_func(
         print(e)
         raise e
 
-@app.route("/send_email", methods=["GET"])
-def send_email():
-    name = request.args.get('name')
-    email = request.args.get('email')
-    subject = request.args.get('subject')
-    message = request.args.get('message')
-    
+@app.route("/enviar_email", methods=["POST"])
+def send_email(): 
+
+    nome = request.form.get('nome')
+    email = request.form.get('email')
+    mensagem = request.form.get('mensagem')
+
     # Mensagem para o casal
     send_email_func('Contato - Filipe & Lore', 'contato@filipeelore.love', f'''
     <p>Segue mensagem escrita:</p>
-    <p>{message}</p>
+    <p>{mensagem}</p>
 
-    <p>Por {name} - {email}</p>
-    ''', subject=f"Mensagem de {name}")
+    <p>Por {nome} - {email}</p>
+    ''', subject=f"Mensagem de {nome}")
     
     # Mensagem de retorno
-    send_email_func(name, email, f'''
-    <p>Olá {name},</p>
+    send_email_func(nome, email, f'''
+    <p>Olá {nome},</p>
 
     <p>Somos gratos pelo carinho e por fazer parte desse mmomento, desejamos também para você tudo de bom e que o SENHOR multiplique as bençãos sobre a sua vida.</p>
 
@@ -94,6 +94,5 @@ def send_email():
 
     <p>Filipe e Lore.</p>
     ''', subject="Filipe & Lore - Obrigado")
-    print("enviando mensagem")
 
-    return f"Hello World {name}"
+    return f"Mensagem enviada de {nome}"
