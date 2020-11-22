@@ -1,4 +1,4 @@
-#cortina {
+.cortina {
   display: none;
   position: fixed;
   top: 0;
@@ -8,6 +8,10 @@
   background-color: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(2px);
   z-index: 10;
+
+  &#cortina_permanente {
+    z-index: 12;
+  }
 }
 
 .modal {
@@ -22,6 +26,15 @@
   padding: 20px;
   box-sizing: border-box;
   border-radius: 3px;
+
+  .centered-container {
+    text-align: center;
+    padding: 40px;
+  }
+
+  &.front {
+    z-index: 13;
+  }
 
   header {
     h1 {

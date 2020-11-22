@@ -320,7 +320,7 @@ footer {
   display: none;
   margin-bottom: 50px; }
 
-  #cortina {
+  .cortina {
     display: none;
     position: fixed;
     top: 0;
@@ -330,28 +330,32 @@ footer {
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(2px);
     z-index: 10; }
+    .cortina#cortina_permanente {
+      z-index: 12; }
 
-    .modal {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: none;
-      position: fixed;
-      min-width: 300px;
-      max-width: 50vw;
-      z-index: 11;
-      background-color: white;
-      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      box-sizing: border-box;
-      border-radius: 3px; }
-      .modal header h1 {
-        font-size: 20px; }
-      .modal button.close {
-        position: absolute;
-        top: 10px;
-        right: 10px; }
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  position: fixed;
+  min-width: 300px;
+  max-width: 50vw;
+  z-index: 11;
+  background-color: white;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 3px; }
+  .modal.front {
+    z-index: 13; }
+    .modal header h1 {
+      font-size: 20px; }
+  .modal button.close {
+    position: absolute;
+    top: 10px;
+    right: 10px; }
 
 input {
   max-width: 100%;

@@ -133,21 +133,27 @@ $(document).ready(function () {
     $.ajax({
       type: form.attr("method"),
       url: form.attr("action"),
-      dataType: 'html',
+      dataType: "html",
       data: form.serialize(),
       beforeSend: function () {
         // $('#insere_aqui').html(iconCarregando);
         console.log("carregando...");
+        $("#carregando").show();
+        $("#cortina_permanente").show();
       },
       complete: function () {
-        $(iconCarregando).remove();
+        $("#carregando").hide();
+        $("#cortina_permanente").hide();
+        $("#envio_mensagens").hide();
       },
       success: function (data, textStatus) {
         console.log("ok");
         console.log(data);
         console.log(textStatus);
+        $("#sucesso_mensagem").show();
       },
       error: function (xhr, er) {
+        $("#erro").show();
         console.log(
           `Error ${xhr.status} - ${xhr.statusText} \n Tipo de erro: ${er}`
         );
