@@ -161,6 +161,10 @@ $(document).ready(function () {
     });
   });
 
+  $("#relogio_contagem_regressiva").countdown("2021/03/07", function (event) {
+    $(this).html(event.strftime("%D dias %H:%M:%S"));
+  });
+
   function pagar() {
     // inicia a instância do checkout
     var checkout = new PagarMeCheckout.Checkout({

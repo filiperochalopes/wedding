@@ -348,10 +348,13 @@ footer {
   padding: 20px;
   box-sizing: border-box;
   border-radius: 3px; }
-  .modal.front {
-    z-index: 13; }
-    .modal header h1 {
-      font-size: 20px; }
+  .modal .centered-container {
+    text-align: center;
+    padding: 40px; }
+    .modal.front {
+      z-index: 13; }
+      .modal header h1 {
+        font-size: 20px; }
   .modal button.close {
     position: absolute;
     top: 10px;
@@ -502,6 +505,16 @@ form button {
   padding: 0 30%;
   text-align: center;
   margin-top: 60px; }
+
+#contagem_regressiva {
+  text-align: center; }
+  #contagem_regressiva h3 {
+    font-size: 24px;
+    line-height: 30px;
+    margin: 20px 0; }
+    #contagem_regressiva > div {
+      font-size: 50px;
+      font-weight: bold; }
 
 html {
   overflow-x: hidden; }

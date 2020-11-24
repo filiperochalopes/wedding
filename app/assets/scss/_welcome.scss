@@ -160,3 +160,18 @@
         margin-top: 60px;
     }
 }
+
+#contagem_regressiva {
+    text-align: center;
+
+    h3 {
+        font-size: 24px;
+        line-height: 30px;
+        margin: 20px 0;
+    }
+
+    > div{
+        font-size: 50px;
+        font-weight: bold;
+    }
+}
