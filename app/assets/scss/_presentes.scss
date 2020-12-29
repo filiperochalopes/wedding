@@ -1,10 +1,28 @@
 #carrinho {
   position: sticky;
   top: 0;
-  padding: 18px 40px;
+  padding: 16px 40px;
   margin: 0 auto;
   background-color: #f1f1f1;
-  z-index: 5;
+  z-index: 201;
+  line-height: 18px;
+
+  svg{
+    height: 15px;
+    vertical-align: middle;
+  }
+
+  button{
+    background: $extra_dark_green;
+    color: white;
+    font-size: 18px;
+    padding: 3px 10px;
+    margin-left: 5px;
+
+    path{
+      fill: white;
+    }
+  }
 }
 
 #lista_presentes {
@@ -86,7 +104,7 @@
   height: 100vh;
   display: none;
   background-color: rgba(47, 85, 62, 0.6);
-  z-index: 99;
+  z-index: 202;
 
   .cover{
     position: absolute;

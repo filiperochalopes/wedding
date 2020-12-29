@@ -1,7 +1,12 @@
 footer {
-  width: 100vw;
+  width: 100%;
   height: 415px;
   background: $wine;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 
   div {
     h3 {
@@ -14,6 +19,11 @@ footer {
 
       color: #ffffff;
       margin: 0;
+
+      @media (max-width: 768px) {
+        display: inline-block;
+        text-align: center;
+      }
     }
 
     button {
@@ -38,6 +48,11 @@ footer {
       font-size: 18px;
       line-height: 21px;
       padding: 0px 0px;
+
+      @media (max-width: 768px) {
+        display: inline-block;
+        text-align: center;
+      }
 
       li {
         list-style: none;

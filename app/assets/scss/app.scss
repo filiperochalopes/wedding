@@ -10,6 +10,7 @@
 @import "appendix";
 @import "form";
 @import "welcome";
+@import "ajude";
 
 html{
   overflow-x: hidden;
@@ -40,8 +41,9 @@ body {
 
 .container {
   position: relative;
-  width: 100vw;
+  width: 100%;
   max-width: 900px;
+  box-sizing: border-box;
   padding: 0 16px;
   margin: 0 auto;
 

@@ -16,5 +16,5 @@ manager = Manager(app)
 Scss(app, static_dir='app/static', asset_dir='app/assets/scss')
 
 from app.models import Models, Forms
-from app.views import hello_world, pagina_inicial, convidados, presentes
+from app.views import hello_world, pagina_inicial, convidados, presentes, ajude
 from app.services import send_email
