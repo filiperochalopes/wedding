@@ -143,7 +143,7 @@ $(document).ready(function () {
 
   $("#pagar").click(function () {
     // Procede para pagamento
-    pagar_teste();
+    pagar_pagarme();
     // Envia mensagem com alguns dados a mais do pagamento
     if (
       localStorage.getItem("carrinho") &&
@@ -227,16 +227,31 @@ $(document).ready(function () {
     $(this).html(event.strftime("%D dias %H:%M:%S"));
   });
 
-  function pagar_teste() {
+  function pagar_pagarme() {
     // inicia a instância do checkout
     var checkout = new PagarMeCheckout.Checkout({
-      encryption_key: "ek_test_qedtchn5pAnzVpEqetVwP86Cw4FgBc",
+      // encryption_key: "ek_test_qedtchn5pAnzVpEqetVwP86Cw4FgBc",
+      encryption_key: "ek_live_kyFI4amPLMRElPNYjFyScrfRN0HPF6",
       success: function (data) {
         console.log(data);
         $("#modal_presente").hide();
         limparCarrinho();
       },
       error: function (err) {
+        $("#modal_presente").hide();
+        $.post(
+          "enviar_email",
+          {
+            nome: $("#input_mensagem_presente_nome").val(),
+            email: "naoresponda@filipeelore.love",
+            mensagem: `A transação no valor de ${$(
+              "#input_mensagem_presente_preco"
+            ).val()} foi rejeitada`,
+          },
+          function () {
+            console.log("Mensagem enviada");
+          }
+        );
         console.log(err);
       },
       close: function () {
