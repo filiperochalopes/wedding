@@ -1,6 +1,40 @@
+function preencherBarraCarrinho() {
+  $("#itens_carrinho").text(
+    JSON.parse(localStorage.getItem("carrinho")).length
+  );
+  $("#preco_carrinho").text(
+    `R$ ${parseFloat(
+      JSON.parse(localStorage.getItem("carrinho")).reduce(
+        (acc, cur) => acc + parseFloat(cur.price),
+        0
+      )
+    ).toFixed(2)}`
+  );
+}
+
+function limparCarrinho() {
+  $("#preco_carrinho").text("");
+  $("#itens_carrinho").text("0");
+  $("button[id^=presentear-bt-]").removeClass("adicionado");
+  localStorage.removeItem("carrinho");
+}
+
 $(document).ready(function () {
   console.log("Documento carregado.");
   console.log($("#convidados"));
+  // Carregando presentes
+  console.log(localStorage.getItem("carrinho"));
+  if (
+    localStorage.getItem("carrinho") &&
+    JSON.parse(localStorage.getItem("carrinho"))
+  ) {
+    carrinho = JSON.parse(localStorage.getItem("carrinho"));
+    carrinho.forEach((item) => {
+      $(`#presentear-bt-${item.id}`).addClass("adicionado");
+    });
+    preencherBarraCarrinho();
+  }
+
   $("#convidados").DataTable({
     pageLength: 50,
   });
@@ -81,17 +115,7 @@ $(document).ready(function () {
       $(this).removeClass("adicionado");
     }
 
-    $("#itens_carrinho").text(
-      JSON.parse(localStorage.getItem("carrinho")).length
-    );
-    $("#preco_carrinho").text(
-      `R$ ${parseFloat(
-        JSON.parse(localStorage.getItem("carrinho")).reduce(
-          (acc, cur) => acc + parseFloat(cur.price),
-          0
-        )
-      ).toFixed(2)}`
-    );
+    preencherBarraCarrinho(false);
   });
 
   /** MODAIS */
@@ -115,7 +139,45 @@ $(document).ready(function () {
 
   $("#checkout").click(function () {
     $("#modal_presente").show();
+  });
+
+  $("#pagar").click(function () {
+    // Procede para pagamento
     pagar_teste();
+    // Envia mensagem com alguns dados a mais do pagamento
+    if (
+      localStorage.getItem("carrinho") &&
+      JSON.parse(localStorage.getItem("carrinho"))
+    ) {
+      var carrinho = JSON.parse(localStorage.getItem("carrinho"));
+      var valorTotal = String(
+        carrinho.reduce((acc, cur) => {
+          return acc + parseFloat(cur.price);
+        }, 0)
+      );
+      $("#input_mensagem_presente_preco").val(valorTotal);
+    }
+    var nome = $("#input_mensagem_presente_nome").val(),
+      mensagem = $("#input_mensagem_presente_mensagem").val(),
+      preco = $("#input_mensagem_presente_preco").val();
+    email = "naoresponda@filipeelore.love";
+    text = `
+    ${
+      nome || "Não identificado"
+    } acabou de te mandar um presente referente ao valor de R$${preco} com a seguinte mensagem: <br/><br/>
+    ${mensagem}`;
+
+    $.post(
+      "enviar_email",
+      {
+        nome,
+        email,
+        mensagem: text,
+      },
+      function () {
+        console.log("Mensagem enviada");
+      }
+    );
   });
 
   $(".close_modal_presente").click(function () {
@@ -129,7 +191,7 @@ $(document).ready(function () {
   $("#envio_mensagens").on("click", "button", function (e) {
     e.preventDefault();
     var form = $("#envio_mensagens_form");
-    console.log(form.serialize());
+
     $.ajax({
       type: form.attr("method"),
       url: form.attr("action"),
@@ -165,43 +227,14 @@ $(document).ready(function () {
     $(this).html(event.strftime("%D dias %H:%M:%S"));
   });
 
-  function pagar() {
-    // inicia a instância do checkout
-    var checkout = new PagarMeCheckout.Checkout({
-      encryption_key: "ek_test_qedtchn5pAnzVpEqetVwP86Cw4FgBc",
-      success: function (data) {
-        console.log(data);
-      },
-      error: function (err) {
-        console.log(err);
-      },
-      close: function () {
-        console.log("The modal has been closed.");
-      },
-    });
-    console.log(parseFloat($(this).data("price")).toString());
-
-    checkout.open({
-      amount: parseFloat($(this).data("price")).toString() + "00",
-      customerData: "true",
-      createToken: "true",
-      items: [
-        {
-          title: `Valor de ${$(this).data("title")}`,
-          unit_price: $(this).data("price"),
-          quantity: 1,
-          tangible: "false",
-        },
-      ],
-    });
-  }
-
   function pagar_teste() {
     // inicia a instância do checkout
     var checkout = new PagarMeCheckout.Checkout({
       encryption_key: "ek_test_qedtchn5pAnzVpEqetVwP86Cw4FgBc",
       success: function (data) {
         console.log(data);
+        $("#modal_presente").hide();
+        limparCarrinho();
       },
       error: function (err) {
         console.log(err);
@@ -210,22 +243,45 @@ $(document).ready(function () {
         console.log("The modal has been closed.");
       },
     });
-    console.log(parseFloat($(this).data("price")).toString());
 
-    checkout.open({
-      amount: "12000",
+    var carrinho, items;
+
+    if (
+      localStorage.getItem("carrinho") &&
+      JSON.parse(localStorage.getItem("carrinho"))
+    ) {
+      carrinho = JSON.parse(localStorage.getItem("carrinho"));
+      items = carrinho.reduce((acc, cur) => {
+        return [
+          ...acc,
+          {
+            id: `PRESENTE_${cur.id}`,
+            title: cur.title,
+            unit_price: String(
+              parseInt(parseFloat(cur.price).toFixed(2) * 100)
+            ),
+            quantity: 1,
+            tangible: "false",
+          },
+        ];
+      }, []);
+    }
+
+    console.log(items);
+
+    checkoutObj = {
+      amount: String(
+        items.reduce((acc, cur) => {
+          return acc + parseInt(cur.unit_price);
+        }, 0)
+      ),
       customerData: "true",
       createToken: "true",
-      items: [
-        {
-          id: "PRESENTE_01",
-          title: `Valor de Presente`,
-          unit_price: "6000",
-          quantity: 2,
-          tangible: "false",
-        },
-      ],
-    });
+      items,
+    };
+
+    console.log(checkoutObj);
+    checkout.open(checkoutObj);
   }
 
   /* -------------------------
