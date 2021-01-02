@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
 {% block title %}- Convidados{% endblock %}
 {% block content %}
-<section>
-    <div id="convite">
-        <p>Texto da bíblia</p>
-        <p>Venha participar dessa celebração de amor e festejar conosco nossa união!</p>
-        <p>Filipe e Lore (estilizar) convida</p>
-        <p>{{convidado.nome}}</p>
-        <p>Para celebrar...</p>
-        <ul>
-            <li>Local:</li>
-            <li>Horário:</li>
-        </ul>
-        <button>Confirmar Presença</button>
+<section id="convite">
+    <div>
+        <img src="/static/img/convite_quadrado.png">
+    </div>
+    <div>
+        <p>"Porque dele, e por meio dele, e para ele são todas as coisas. A ele, pois, a glória eternamente. Amém!" Rm
+            11:36</p>
+        <p>Convite de</p>
+        <h2>{{convidado.nome}}</h2>
+        <form id="confirma_presenca" type="post" action="/confirma_presenca">
+            <input type="number" step="1" min="1" max="{{convidado.numero_convidados}}" value="{{convidado.numero_convidados}}"> convites
+            <button type="submit">Confirmar Presença de <span>{{convidado.numero_convidados}}</span> pessoas</button>
+        </form>
     </div>
 </section>
 {% endblock %}

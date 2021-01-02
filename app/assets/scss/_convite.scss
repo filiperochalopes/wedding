@@ -1,11 +1,39 @@
-#convite{
+#convite {
     text-align: center;
-    margin: 30px;
     padding: 30px;
-    border: 1px solid #ccc;
+    padding-top: 120px;
+    display: flex;
+    flex-wrap: wrap;
 
-    button{
-        padding: 25px 60px;
+    > div {
+        flex: 1 0 50%;
+
+        &:nth-child(2){
+            text-align: left;
+            flex: 0 1 200px;
+            padding-left: 30px;
+
+            p:nth-child(2){
+                position: relative;
+                top: 20px;
+            }
+        }
+    }
+    
+    img {
+        min-width: 320px;
+        width: 95%;
+        box-shadow: 7px 7px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    input{
+        width: 50px;
+        min-width: 50px;
+        display: inline-block;
+    }
+
+    button {
+        padding: 10px 15px;
         font-size: 18px;
     }
 }

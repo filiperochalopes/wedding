@@ -16,3 +16,4 @@ flup==1.0.3
 gunicorn
 pyperclip
 pagarme-python==3.3.2
+qrcode[pil]
