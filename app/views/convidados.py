@@ -18,10 +18,15 @@ def convidados():
     def contar_convidados(convidados):
         return reduce(lambda acc,cur : acc+cur.numero_convidados if cur.numero_convidados else acc, convidados, 0)
 
+    def contar_convidados_confirmados(convidados):
+        return reduce(lambda acc,cur : acc+cur.confirmou_presenca_numero if cur.confirmou_presenca_numero else acc, convidados, 0)
+
     total_convidados = contar_convidados(convidados)
+    total_convidados_confirmados = contar_convidados_confirmados(convidados)
     media_convidados_por_convite = total_convidados / len([convidado for convidado in convidados if convidado.nome is not None])
     estatisticas = {
         'total_convidados': total_convidados,
+        'total_convidados_confirmados': total_convidados_confirmados,
         'media_convidados_por_convite': media_convidados_por_convite,
         'categorias' : {},
         'noivos': {}
