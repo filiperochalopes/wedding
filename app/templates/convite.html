@@ -10,8 +10,10 @@
             11:36</p>
         <p>Convite de</p>
         <h2>{{convidado.nome}}</h2>
-        <form id="confirma_presenca" type="post" action="/confirma_presenca">
-            <input type="number" step="1" min="1" max="{{convidado.numero_convidados}}" value="{{convidado.numero_convidados}}"> convites
+        <form id="confirma_presenca" method="POST" action="/confirma_presenca">
+            <input type="number" name="numero_convidados" step="1" min="1" max="{{convidado.numero_convidados}}"
+                value="{{convidado.numero_convidados}}"> convites
+            <input type="hidden" name="uuid" value="{{uuid}}">
             <button type="submit">Confirmar Presença de <span>{{convidado.numero_convidados}}</span> pessoas</button>
         </form>
     </div>

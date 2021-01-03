@@ -300,6 +300,70 @@ $(document).ready(function () {
   }
 
   /* -------------------------
-  --------- GRÁFICOS ---------
+  --------- CONVITE ---------
   ---------------------------- */
+  $("#confirma_presenca input").change(function (e) {
+    $("#confirma_presenca button span").text(e.target.value);
+  });
+
+  $("#confirma_presenca").submit(function (e) {
+    e.preventDefault();
+    var form = $(this);
+
+    $.ajax({
+      type: form.attr("method"),
+      url: form.attr("action"),
+      data: form.serialize(),
+      beforeSend: function () {
+        $("#carregando").show();
+        $("#cortina_permanente").show();
+      },
+      complete: function () {
+        $("#carregando").hide();
+        $("#cortina_permanente").hide();
+        $("#envio_mensagens").hide();
+      },
+      success: function (data, textStatus) {
+        open_modal("sucesso_confirmacao_convite");
+        console.log(data);
+      },
+      error: function (xhr, er) {
+        $("#erro").show();
+        console.log(
+          `Error ${xhr.status} - ${xhr.statusText} \n Tipo de erro: ${er}`
+        );
+      },
+    });
+  });
+
+  function copiarTextoConvite(nome, numero_convites) {
+    /* Get the text field */
+    var copyText = $("#copiar_texto"),
+      newText = copyText
+        .val()
+        .replace("{nome}", nome)
+        .replace("numero_convites", numero_convites);
+    copyText.val(newText);
+    var newTextarea = document.createElement("textarea");
+
+    document.body.appendChild(newTextarea);
+    newTextarea.value = newText;
+    /* Select the text field */
+    newTextarea.select();
+    if (newTextarea.setSelectionRange)
+      newTextarea.setSelectionRange(0, 99999); /* For mobile devices */
+
+    /* Copy the text inside the text field */
+    document.execCommand("copy");
+
+    /* Alert the copied text */
+    alert("Copied the text: " + newTextarea.value);
+    return newTextarea.value;
+  }
+
+  $("table").on("click", ".copiar_texto", function (e) {
+    console.log(
+      copiarTextoConvite($(this).data("nome"), $(this).data("numero_convites"))
+    );
+  });
 });

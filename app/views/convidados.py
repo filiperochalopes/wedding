@@ -1,5 +1,6 @@
 from flask import render_template
 from app import app, db
+from flask import request
 from functools import reduce
 from pprint import pprint
 
@@ -57,4 +58,10 @@ def convidados():
 def convite(uuid):
     print(uuid)
     convidado = db.session.query(Convidado).filter(Convidado.convite_uuid == uuid).one()
-    return render_template('convite.html', convidado=convidado)
+    return render_template('convite.html', convidado=convidado, uuid=uuid)
+
+@app.route("/confirma_presenca", methods=["POST"])
+def confirma_presenca():
+    uuid = request.form.get('uuid')
+    numero_convidados = request.form.get('numero_convidados')
+    return f"Hello world {uuid} {numero_convidados}"
