@@ -86,7 +86,7 @@ def qrcode(uuid):
         border=4,
     )
     
-    qr.add_data(f"{protocol}//{base_url}/convite/{uuid}")
+    qr.add_data(f"https://filipeelore.love/convite/{uuid}")
     qr.make(fit=True)
 
     img = qr.make_image(fill_color="black", back_color="white")
