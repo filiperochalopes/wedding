@@ -4,6 +4,9 @@ from flask import request
 from functools import reduce
 from pprint import pprint
 
+import base64
+from io import BytesIO
+from urllib.parse import urlparse
 from datetime import datetime
 from app.models.Models import Convidado, Categoria, Noivo
 
@@ -70,3 +73,25 @@ def confirma_presenca():
     convidado.confirmou_presenca_timestamp = datetime.utcnow()
     db.session.commit()
     return f"Hello world {uuid} {numero_convidados}"
+
+@app.route("/qrcode/<uuid>", methods=["GET"])
+def qrcode(uuid):
+    base_url = request.environ["HTTP_HOST"]
+    protocol = request.environ["HTTP_REFERER"].split("/")[0]
+    import qrcode
+    qr = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    
+    qr.add_data(f"{protocol}//{base_url}/convite/{uuid}")
+    qr.make(fit=True)
+
+    img = qr.make_image(fill_color="black", back_color="white")
+    buffered = BytesIO()
+    img.save(buffered, format="JPEG")
+    img_str = base64.b64encode(buffered.getvalue())
+    return f"data:image/jpeg;base64,{img_str.decode('utf-8')}"
+    

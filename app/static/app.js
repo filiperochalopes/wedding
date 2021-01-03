@@ -372,6 +372,9 @@ $(document).ready(function () {
         $(this).data("uuid")
       )
     );
+    if (!$("#convite_appendix").hasClass("opened")) {
+      $("#convite_appendix").addClass("opened");
+    }
   });
 
   $(".lateral_appendix button").click(function () {
@@ -380,5 +383,35 @@ $(document).ready(function () {
     } else {
       $(this).parent().addClass("opened");
     }
+  });
+
+  $(".gerar_qrcode").click(function () {
+    var uuid = $(this).data("uuid");
+    $.ajax({
+      type: "GET",
+      url: `/qrcode/${uuid}`,
+      beforeSend: function () {
+        $("#carregando").show();
+        $("#cortina_permanente").show();
+      },
+      complete: function () {
+        $("#carregando").hide();
+        $("#cortina_permanente").hide();
+        $("#envio_mensagens").hide();
+      },
+      success: function (data, textStatus) {
+        $("#qrcode_img").html(`<img src="${data}"/>`);
+        if (!$("#qrcode_appendix").hasClass("opened")) {
+          $("#qrcode_appendix").addClass("opened");
+        }
+        console.log(data);
+      },
+      error: function (xhr, er) {
+        $("#erro").show();
+        console.log(
+          `Error ${xhr.status} - ${xhr.statusText} \n Tipo de erro: ${er}`
+        );
+      },
+    });
   });
 });
