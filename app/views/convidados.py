@@ -4,6 +4,7 @@ from flask import request
 from functools import reduce
 from pprint import pprint
 
+from datetime import datetime
 from app.models.Models import Convidado, Categoria, Noivo
 
 @app.route("/convidados")
@@ -64,4 +65,8 @@ def convite(uuid):
 def confirma_presenca():
     uuid = request.form.get('uuid')
     numero_convidados = request.form.get('numero_convidados')
+    convidado = db.session.query(Convidado).filter(Convidado.convite_uuid==uuid).one()
+    convidado.confirmou_presenca_numero = numero_convidados
+    convidado.confirmou_presenca_timestamp = datetime.utcnow()
+    db.session.commit()
     return f"Hello world {uuid} {numero_convidados}"

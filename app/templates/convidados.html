@@ -45,7 +45,7 @@ content %}
         <td>{{convidado.categoria.nome}}</td>
         <td class="acoes">
           <div><button class="copiar_texto" data-numero_convites="{{convidado.numero_convidados}}"
-              data-nome="{{convidado.nome}}">Copiar Texto</button></div>
+              data-nome="{{convidado.nome}}" data-uuid="{{convidado.convite_uuid}}">Copiar Texto</button></div>
           <div><button class="copiar_imagem">Copiar Imagem</button></div>
         </td>
       </tr>
@@ -110,6 +110,7 @@ content %}
   <textarea id="copiar_texto">Convidamos *{nome}* para celebrar conosco o nosso casamento, no dia *7 de Março de 2021* às *9:30* da manhã. Local: *Rancho Realize Eventos. Av. Antônio Sérgio Carneiro, 5938 - Feira de Santana/BA*
 
   _{numero_convites} convite(s)_
+  Confirme sua presença em {link}
   </textarea>
 </section>
 {% endblock %}

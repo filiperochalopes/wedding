@@ -336,14 +336,16 @@ $(document).ready(function () {
     });
   });
 
-  function copiarTextoConvite(nome, numero_convites) {
+  function copiarTextoConvite(nome, numero_convites, uuid) {
     /* Get the text field */
-    var copyText = $("#copiar_texto"),
+    var getUrl = window.location;
+    var baseUrl = `${getUrl.protocol}//${getUrl.host}`,
+      copyText = $("#copiar_texto"),
       newText = copyText
         .val()
         .replace("{nome}", nome)
-        .replace("numero_convites", numero_convites);
-    copyText.val(newText);
+        .replace("{numero_convites}", numero_convites)
+        .replace("{link}", `${baseUrl}/convite/${uuid}`);
     var newTextarea = document.createElement("textarea");
 
     document.body.appendChild(newTextarea);
@@ -355,6 +357,7 @@ $(document).ready(function () {
 
     /* Copy the text inside the text field */
     document.execCommand("copy");
+    document.body.removeChild(newTextarea);
 
     /* Alert the copied text */
     alert("Copied the text: " + newTextarea.value);
@@ -363,7 +366,11 @@ $(document).ready(function () {
 
   $("table").on("click", ".copiar_texto", function (e) {
     console.log(
-      copiarTextoConvite($(this).data("nome"), $(this).data("numero_convites"))
+      copiarTextoConvite(
+        $(this).data("nome"),
+        $(this).data("numero_convites"),
+        $(this).data("uuid")
+      )
     );
   });
 });

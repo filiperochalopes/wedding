@@ -627,6 +627,10 @@ footer div ul li a {
   right: 10px;
 }
 
+#carregando {
+  z-index: 11;
+}
+
 input {
   max-width: 100%;
   min-width: 300px;
