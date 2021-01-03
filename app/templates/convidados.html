@@ -4,6 +4,16 @@ content %}
   <br /><br />
   <br /><br />
   <br /><br />
+  <div class="lateral_appendix opened" id="qrcode_appendix">
+    <button>QR CODE</button>
+    <div id="qrcode_img"></div>
+  </div>
+  <div class="lateral_appendix opened" id="convite_appendix">
+    <button>CONVITE</button>
+    <div id="convite_img">
+      <img src="/static/img/convite_quadrado.png" />
+    </div>
+  </div>
   <h1>
     {{estatisticas.total_convidados}} convidados
     <button id="mais_informacoes_convidados_bt">Mais informações</button>
@@ -45,8 +55,7 @@ content %}
         <td>{{convidado.categoria.nome}}</td>
         <td class="acoes">
           <div><button class="copiar_texto" data-numero_convites="{{convidado.numero_convidados}}"
-              data-nome="{{convidado.nome}}" data-uuid="{{convidado.convite_uuid}}">Copiar Texto</button></div>
-          <div><button class="copiar_imagem">Copiar Imagem</button></div>
+              data-nome="{{convidado.nome}}" data-uuid="{{convidado.convite_uuid}}">Copiar Convite</button><button class="gerar_qrcode" data-uuid="{{convidado.convite_uuid}}">Gerar QRCODE</button></div>
         </td>
       </tr>
       {% endfor %}
