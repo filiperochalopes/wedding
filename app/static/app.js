@@ -385,7 +385,7 @@ $(document).ready(function () {
     }
   });
 
-  $(".gerar_qrcode").click(function () {
+  $("table#convidados").on("click", ".gerar_qrcode", function () {
     var uuid = $(this).data("uuid");
     $.ajax({
       type: "GET",
