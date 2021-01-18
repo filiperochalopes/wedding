@@ -234,8 +234,10 @@ $(document).ready(function () {
       encryption_key: "ek_live_kyFI4amPLMRElPNYjFyScrfRN0HPF6",
       success: function (data) {
         console.log(data);
-        console.log(data.token);
-        console.log(checkoutObj.amount);
+        console.log({
+          amount: checkoutObj.amount,
+          token: data.token,
+        });
         $("#modal_presente").hide();
         limparCarrinho();
 
@@ -244,22 +246,22 @@ $(document).ready(function () {
           amount: checkoutObj.amount,
           token: data.token,
         }).done((data) => {
-          var {
-            payment_method,
-            boleto_barcode,
-            boleto_url
-          } = data
+          if (data.errors) {
+            open_modal("erro_presente");
+          } else {
+            var { payment_method, boleto_barcode, boleto_url } = data;
 
-          if(payment_method === "boleto"){
-            $("#numero_boleto").text(boleto_barcode)
-            $("#link_boleto").text(boleto_url)
-            $("#link_boleto").attr("href", boleto_url)
-            open_modal("sucesso_presente_boleto")
-          }else{
-            open_modal("sucesso_presente")
+            if (payment_method === "boleto") {
+              $("#numero_boleto").text(boleto_barcode);
+              $("#link_boleto").text(boleto_url);
+              $("#link_boleto").attr("href", boleto_url);
+              open_modal("sucesso_presente_boleto");
+            } else {
+              open_modal("sucesso_presente");
+            }
           }
 
-          console.log(data)
+          console.log(data);
         });
       },
       error: function (err) {
