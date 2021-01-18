@@ -15,10 +15,11 @@ def processar_pagamento():
     token = request.form.get('token')
     amount = request.form.get('amount')
     api_key_test = "ak_test_D67WtwUuf2dYB4u7N2pPuThmhN1KHY"
+    api_key_live = "ak_live_ZtKhKIDkSJa9n6PhvOgVPwD5KEFsBj"
 
     r = requests.post(f"https://api.pagar.me/1/transactions/{token}/capture", data={
         'amount': amount,
-        'api_key': api_key_test
+        'api_key': api_key_live
     })
 
     print(r.status_code)

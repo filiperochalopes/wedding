@@ -230,8 +230,8 @@ $(document).ready(function () {
   function pagar_pagarme() {
     // inicia a instância do checkout
     var checkout = new PagarMeCheckout.Checkout({
-      encryption_key: "ek_test_qedtchn5pAnzVpEqetVwP86Cw4FgBc",
-      // encryption_key: "ek_live_kyFI4amPLMRElPNYjFyScrfRN0HPF6",
+      // encryption_key: "ek_test_qedtchn5pAnzVpEqetVwP86Cw4FgBc",
+      encryption_key: "ek_live_kyFI4amPLMRElPNYjFyScrfRN0HPF6",
       success: function (data) {
         console.log(data);
         console.log(data.token);
