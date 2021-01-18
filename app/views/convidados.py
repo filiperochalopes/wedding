@@ -61,6 +61,9 @@ def convidados():
 
     pprint(estatisticas)
 
+    for convidado in convidados:
+        convidado.negou_presenca = convidado.negou_presenca if convidado.negou_presenca else False
+
     return render_template('convidados.html', convidados=convidados, estatisticas=estatisticas)
 
 @app.route("/convite/<uuid>")
@@ -99,4 +102,30 @@ def qrcode(uuid):
     img.save(buffered, format="JPEG")
     img_str = base64.b64encode(buffered.getvalue())
     return f"data:image/jpeg;base64,{img_str.decode('utf-8')}"
+
+@app.route("/pendencia_texto/<id>", methods=["GET", "POST"])
+def pendencia_texto(id):
+    convidado = db.session.query(Convidado).filter(Convidado.id == id).one()
+    if request.method == 'POST':
+        convidado.pendencia_texto = request.form.get('texto')
+        db.session.commit()
+        return "Confirmado"
+    elif request.method == 'GET':
+        return convidado.pendencia_texto if convidado.pendencia_texto else ""
+
+@app.route("/pendencia/<id>", methods=["POST"])
+def pendencia(id):
+    convidado = db.session.query(Convidado).filter(Convidado.id == id).one()
+    convidado.pendencia = True if request.form.get('pendencia') == 'true' else False
+    if convidado.pendencia == False:
+        convidado.pendencia_texto = None
+    db.session.commit()
+    return "Confirmado"
+
+@app.route("/negou_presenca/<id>", methods=["POST"])
+def negou_presenca(id):
+    convidado = db.session.query(Convidado).filter(Convidado.id == id).one()
+    convidado.negou_presenca = True if request.form.get('negou_presenca') == 'true' else False
+    db.session.commit()
+    return "Confirmado"
     

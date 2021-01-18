@@ -571,6 +571,37 @@ footer div ul li a {
   margin-bottom: 50px;
 }
 
+.pendencias,
+.negou_presenca {
+  width: 20px;
+}
+
+.pendencias input[type="checkbox"],
+.negou_presenca input[type="checkbox"] {
+  min-width: auto;
+  width: 15px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.pendencias {
+  position: relative;
+}
+
+.pendencias div {
+  display: none;
+  position: absolute;
+  bottom: -50px;
+  left: -200px;
+  display: block;
+  z-index: 10;
+  width: 200px;
+  padding: 10px;
+  background-color: white;
+  -webkit-box-shadow: -1px -1px 10px rgba(0, 0, 0, 0.1);
+          box-shadow: -1px -1px 10px rgba(0, 0, 0, 0.1);
+}
+
 .cortina {
   display: none;
   position: fixed;

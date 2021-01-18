@@ -129,6 +129,11 @@ $(document).ready(function () {
     $(`#${id}`).show();
   }
 
+  function close_modal(id) {
+    $("#cortina").hide();
+    $(`#${id}`).hide();
+  }
+
   $("#enviar_mensagem").click(function () {
     open_modal("envio_mensagens");
   });
@@ -329,8 +334,54 @@ $(document).ready(function () {
   /* -------------------------
   --------- CONVITE ---------
   ---------------------------- */
+
   $("#confirma_presenca input").change(function (e) {
     $("#confirma_presenca button span").text(e.target.value);
+  });
+
+  $(".pendencias").on("mouseenter", "input", function (e) {
+    $(this).parent().find("div").show();
+    console.log("passou mouse")
+    $.get(`pendencia_texto/${id}`, function (data) {
+      console.log(data)
+      $(this).parent().find("div").text(data);
+    });
+  });
+
+  $(".pendencias").on("mouseleave", "input", function (e) {
+    $(this).parent().find("div").hide();
+  });
+
+  $(".pendencias").on("change", "input", function (e) {
+    var id = $(this).data("id");
+    $.post(`pendencia/${id}`, { pendencia: Boolean($(this).is(":checked")) });
+
+    if ($(this).is(":checked")) {
+      var id = $(this).data("id");
+      $("#editar_pendencia_texto button").attr("data-id", id);
+      $.get(`pendencia_texto/${id}`).done(function (data) {
+        $("#editar_pendencia_texto textarea").val(data);
+      });
+      open_modal("editar_pendencia_texto");
+    }
+  });
+
+  $(".negou_presenca").on("change", "input", function (e) {
+    var id = $(this).data("id");
+    $.post(`negou_presenca/${id}`, {
+      negou_presenca: Boolean($(this).is(":checked")),
+    });
+  });
+
+  $("#editar_pendencia_texto button").click(function (e) {
+    var texto = $("#editar_pendencia_texto textarea").val(),
+      id = $(this).data("id");
+    if (texto) {
+      $.post(`pendencia_texto/${id}`, { texto }).done(() =>
+        close_modal("editar_pendencia_texto")
+      );
+    }
+    console.log(id, texto);
   });
 
   $("#confirma_presenca").submit(function (e) {
