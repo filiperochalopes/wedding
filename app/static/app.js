@@ -230,12 +230,37 @@ $(document).ready(function () {
   function pagar_pagarme() {
     // inicia a instância do checkout
     var checkout = new PagarMeCheckout.Checkout({
-      // encryption_key: "ek_test_qedtchn5pAnzVpEqetVwP86Cw4FgBc",
-      encryption_key: "ek_live_kyFI4amPLMRElPNYjFyScrfRN0HPF6",
+      encryption_key: "ek_test_qedtchn5pAnzVpEqetVwP86Cw4FgBc",
+      // encryption_key: "ek_live_kyFI4amPLMRElPNYjFyScrfRN0HPF6",
       success: function (data) {
         console.log(data);
+        console.log(data.token);
+        console.log(checkoutObj.amount);
         $("#modal_presente").hide();
         limparCarrinho();
+
+        // Faz a "captura" da transação
+        $.post("processar_pagamento", {
+          amount: checkoutObj.amount,
+          token: data.token,
+        }).done((data) => {
+          var {
+            payment_method,
+            boleto_barcode,
+            boleto_url
+          } = data
+
+          if(payment_method === "boleto"){
+            $("#numero_boleto").text(boleto_barcode)
+            $("#link_boleto").text(boleto_url)
+            $("#link_boleto").attr("href", boleto_url)
+            open_modal("sucesso_presente_boleto")
+          }else{
+            open_modal("sucesso_presente")
+          }
+
+          console.log(data)
+        });
       },
       error: function (err) {
         $("#modal_presente").hide();

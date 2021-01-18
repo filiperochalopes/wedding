@@ -17,3 +17,4 @@ gunicorn
 pyperclip
 pagarme-python==3.3.2
 qrcode[pil]
+requests
